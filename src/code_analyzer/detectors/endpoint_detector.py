@@ -21,16 +21,13 @@ class EndpointDetector(Detector):
         for root, _, files in os.walk(self.directory):
             for fname in files:
                 fpath = os.path.join(root, fname)
-                
-                # — Используем ENDPOINT_IGNORE_FILE_PATTERNS (regex) вместо старых glob-паттернов
-                if any(regex.search(fpath) for regex in ENDPOINT_IGNORE_FILE_PATTERNS):
+
+                # Пропускаем всё, что матчится под ignore-паттерны
+                if any(pat.search(fpath) for pat in ENDPOINT_IGNORE_FILE_PATTERNS):
                     continue
 
-                # только поддерживаемые расширения
-                if not fname.lower().endswith((
-                    '.js', '.ts', '.jsx', '.tsx',
-                    '.py', '.rb', '.php', '.go'
-                )):
+                # Интересуют только кодовые файлы
+                if not fname.endswith(('.js', '.ts', '.jsx', '.tsx', '.py', '.rb', '.php', '.go')):
                     continue
 
                 try:
@@ -38,16 +35,19 @@ class EndpointDetector(Detector):
                 except Exception:
                     continue
 
-                # 1) Ищем API-эндпоинты по языковым паттернам
-                patterns = ENDPOINT_PATTERNS.get(self.main_lang, [])
-                for regex, framework in patterns:
+                rel = os.path.relpath(fpath, start=self.directory)
+
+                # 1) Ищем API-эндпоинты по паттернам для текущего языка
+                for regex, framework in ENDPOINT_PATTERNS.get(self.main_lang, []):
                     for match in regex.finditer(text):
-                        endpoint = match.group(1)  # <-- group(1) holds the path
+                        method = match.group(1)       # HTTP-метод (get, post...)
+                        path   = match.group(2)       # путь из ковычек
                         line_no = text[:match.start()].count('\n') + 1
                         endpoints.add((
                             framework,
-                            endpoint,
-                            os.path.relpath(fpath, start=self.directory),
+                            method,
+                            path,
+                            rel,
                             line_no
                         ))
 
@@ -56,14 +56,21 @@ class EndpointDetector(Detector):
                     url = next(g for g in match.groups() if g)
                     line_no = text[:match.start()].count('\n') + 1
                     ajax_calls.add((
-                        os.path.relpath(fpath, start=self.directory),
+                        rel,
                         line_no,
                         url
                     ))
 
+        # Составляем списки словарей (без дублирования)
         endpoint_list = [
-            {'framework': fw, 'endpoint': ep, 'file': fp, 'line': ln}
-            for fw, ep, fp, ln in sorted(endpoints)
+            {
+                'framework': fw,
+                'method':     meth,
+                'endpoint':   ep,
+                'file':       fp,
+                'line':       ln
+            }
+            for fw, meth, ep, fp, ln in sorted(endpoints)
         ]
         ajax_list = [
             {'file': fp, 'line': ln, 'call': url}

@@ -6,10 +6,6 @@ class ReportGenerator:
         self.output_format = output_format
 
     def generate(self, results: Dict[str, Any]) -> None:
-        """
-        Формирует отчёт по результатам анализа.
-        Поддерживаемые форматы: 'console', 'json', 'html'.
-        """
         if self.output_format == 'console':
             self._to_console(results)
         elif self.output_format == 'json':
@@ -18,7 +14,6 @@ class ReportGenerator:
             self._to_html(results)
 
     def _to_console(self, results: Dict[str, Any]) -> None:
-        """Красивый табличный вывод в консоль"""
         from collections import defaultdict
         from ..utils import format_path
 
@@ -62,24 +57,36 @@ class ReportGenerator:
                 for item in items:
                     print(f"  - {item}")
 
-         # === API ЭНДПОИНТЫ ===
+        # --- API Эндпоинты ---
         print("=== API ЭНДПОИНТЫ ===")
-        endpoints = results.get('endpoints', [])
-        if endpoints:
-            for ep in endpoints:
-                # Changed: вместо ep['pattern_type'] используем ep['framework']
-                print(f"  [Line {ep['line']}] {ep['framework']} -> {ep['endpoint']}")
-        else:
+        eps = results.get('endpoints', [])
+        if not eps:
             print("Не найдено API эндпоинтов")
+            return
 
-        # === AJAX-ЗАПРОСЫ ===
-        print("\n=== AJAX-ЗАПРОСЫ ===")
-        ajax = results.get('ajax', [])
-        if ajax:
-            for call in ajax:
-                print(f"  {call['file']}:{call['line']} -> {call['call']}")
+        # Группируем по файлам
+        by_file = defaultdict(list)
+        for ep in eps:
+            by_file[ep['file']].append(ep)
+
+        # Выводим по файлам, предварительно сортируя по line
+        for file_path, endpoints in sorted(by_file.items()):
+            print(f"\n{file_path}:")
+            # Сортируем список по номеру строки
+            for ep in sorted(endpoints, key=lambda x: x.get('line', 0)):
+                line      = ep.get('line', '?')
+                method    = ep.get('method', '').upper()
+                framework = ep.get('framework', '')
+                endpoint  = ep.get('endpoint', '')
+                print(f"  · {line:>4}  {method:<6} {framework:<10} {endpoint}")
+
+        # --- AJAX ---
+        print("=== AJAX-ЗАПРОСЫ ===")
+        if not results['ajax']:
+            print("Нет AJAX-запросов")
         else:
-            print("Не найдено AJAX-вызовов")
+            for ajax in results['ajax']:
+                print(f"  {ajax['file']}:{ajax['line']} -> {ajax['call']}")
 
     def _to_html(self, results: Dict[str, Any]) -> None:
         # Генерация HTML файла и сохранение на диск
