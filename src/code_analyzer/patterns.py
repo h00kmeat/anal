@@ -21,6 +21,8 @@ ENDPOINT_IGNORE_FILE_PATTERNS = [
     re.compile(r'\b\.circleci\b'),
     re.compile(r'\bjenkins\b', re.IGNORECASE),
     re.compile(r'\.log$'),
+    # тестовые Go-файлы
+    re.compile(r'_test\.go$', re.IGNORECASE),
 ]
 
 ENDPOINT_PATTERNS = {
@@ -70,6 +72,8 @@ ENDPOINT_PATTERNS = {
             r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)',
             re.IGNORECASE
         ), "NestJS"),
+        # Express: router.route('/foo').get(...)
+        (re.compile(r'\brouter\.route\(\s*["\']([^"\']+)["\']\)\.(get|post|put|delete|patch)\b'), "Express"),
     ],
     "TypeScript": [
         # дублируем те же паттерны, что и для JS
@@ -81,6 +85,7 @@ ENDPOINT_PATTERNS = {
             r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)',
             re.IGNORECASE
         ), "NestJS"),
+        (re.compile(r'\brouter\.route\(\s*["\']([^"\']+)["\']\)\.(get|post|put|delete|patch)\b'), "Express"),
     ],
     "JavaScript/TypeScript": [
         # Express / Router: app.get('/foo', ...) or router.post(...)

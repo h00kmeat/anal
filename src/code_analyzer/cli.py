@@ -39,8 +39,7 @@ def main():
     secrets = secret_analyzer.find_secrets()
 
     # 5) Эндпоинты и AJAX
-    ep_detector = EndpointDetector(args.path, main_lang)
-    active_langs = [lang for lang in distro if lang in ENDPOINT_PATTERNS]
+    active_langs = [lang for lang in distro.keys() if lang in ENDPOINT_PATTERNS]
     ep_detector = EndpointDetector(args.path, active_langs)
     ep_res      = ep_detector.detect()
     endpoints   = ep_res.get('endpoints', [])
