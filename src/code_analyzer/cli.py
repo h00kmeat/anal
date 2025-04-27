@@ -6,7 +6,7 @@ from .analyzers.secret_analyzer       import SecretAnalyzer
 from .analyzers.report_generator      import ReportGenerator
 from .detectors.endpoint_detector     import EndpointDetector
 from .detectors.config_detector       import ConfigDetector
-from .patterns                        import CONFIG_PATTERNS
+from .patterns                        import CONFIG_PATTERNS, ENDPOINT_PATTERNS
 
 def main():
     parser = argparse.ArgumentParser(description="Анализатор безопасности исходного кода")
@@ -40,6 +40,8 @@ def main():
 
     # 5) Эндпоинты и AJAX
     ep_detector = EndpointDetector(args.path, main_lang)
+    active_langs = [lang for lang in distro if lang in ENDPOINT_PATTERNS]
+    ep_detector = EndpointDetector(args.path, active_langs)
     ep_res      = ep_detector.detect()
     endpoints   = ep_res.get('endpoints', [])
     ajax_calls  = ep_res.get('ajax', [])

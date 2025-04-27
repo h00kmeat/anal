@@ -2,96 +2,148 @@
 import re
 
 ENDPOINT_IGNORE_FILE_PATTERNS = [
-    # тестовые и мок-файлы
-    re.compile(r'\b__tests__\b', re.IGNORECASE),
-    re.compile(r'\b__mocks__\b', re.IGNORECASE),
-    re.compile(r'\btest(s|ing)?\b', re.IGNORECASE),
-    re.compile(r'\.test\.(js|ts)x?$', re.IGNORECASE),
-    re.compile(r'\.(spec|e2e)\.(js|ts)x?$', re.IGNORECASE),
+    # тесты и моки
+    re.compile(r'_test\.go$',           re.IGNORECASE),
+    re.compile(r'\b__tests__\b',        re.IGNORECASE),
+    re.compile(r'\b__mocks__\b',        re.IGNORECASE),
+    re.compile(r'\.(?:test|spec|e2e)\.(?:js|ts)x?$', re.IGNORECASE),
 
-    # типичные сборки / дистрибуции / зависимости
+    # сборки, зависимости, артефакты
     re.compile(r'\bnode_modules\b'),
     re.compile(r'\bvendor\b'),
-    re.compile(r'\bdist\b'),
-    re.compile(r'\bbuild\b'),
-    re.compile(r'\bcoverage\b'),
+    re.compile(r'\b(dist|build|coverage)\b'),
     re.compile(r'\b\.git\b'),
-    re.compile(r'\b\.next\b'),      # Next.js
-    re.compile(r'\b\.nuxt\b'),      # Nuxt.js
-    re.compile(r'\bpublic\b'),      # статические
-    re.compile(r'\bfixtures?\b'),   # фикстуры
+    re.compile(r'\b\.next\b'),
+    re.compile(r'\bfixtures?\b'),
 
-    # конфиг-папки
-    re.compile(r'\bconfig\b'),
-    re.compile(r'\bconfigs?\b'),
+    # конфиг-директории, логи, документация
+    re.compile(r'\bconfig(?:s)?\b'),
     re.compile(r'\b\.circleci\b'),
     re.compile(r'\bjenkins\b', re.IGNORECASE),
+    re.compile(r'\.log$'),
 ]
 
 ENDPOINT_PATTERNS = {
     "Java": [
-        (re.compile(r'@(?:RequestMapping|GetMapping|PostMapping|PutMapping|DeleteMapping|PatchMapping)\s*\(\s*["\']([^"\']+)["\']'), "Spring MVC"),
-        (re.compile(r'@Path\(\s*["\']([^"\']+)["\']\)'),                                          "JAX-RS"),
-        (re.compile(r'@Route\(\s*path\s*=\s*["\']([^"\']+)["\']\)'),                              "Vaadin"),
+        # Spring MVC: @RequestMapping, @GetMapping, etc.
+        (re.compile(
+            r'@(?:RequestMapping|GetMapping|PostMapping|PutMapping|DeleteMapping|PatchMapping)\s*\(\s*["\']([^"\']+)["\']'
+        ), "Spring MVC"),
+        # JAX-RS
+        (re.compile(
+            r'@Path\s*\(\s*["\']([^"\']+)["\']\s*\)'
+        ), "JAX-RS"),
+        # Vaadin
+        (re.compile(
+            r'@Route\s*\(\s*path\s*=\s*["\']([^"\']+)["\']\s*\)'
+        ), "Vaadin")
     ],
 
     "C#": [
-        (re.compile(r'\[(?:HttpGet|HttpPost|HttpPut|HttpDelete|HttpPatch|Route)\s*\(\s*["\']([^"\']+)["\']\)'), "ASP.NET Core"),
-        (re.compile(r'Map(?:Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'),                           "ASP.NET Core Endpoints"),
-        (re.compile(r'\[Route\(\s*["\']([^"\']+)["\']\)'),                                                  "ASP.NET Route"),
+        # ASP.NET Core attributes
+        (re.compile(
+            r'\[(?:HttpGet|HttpPost|HttpPut|HttpDelete|HttpPatch|Route)\s*\(\s*["\']([^"\']+)["\']\s*\)\]'
+        ), "ASP.NET Core"),
+        # Minimal API MapGet/MapPost...
+        (re.compile(
+            r'Map(?:Get|Post|Put|Delete|Patch)\s*\(\s*["\']([^"\']+)["\']\s*,'
+        ), "ASP.NET Core Endpoints"),
+        # Classic ASP.NET Route
+        (re.compile(
+            r'\[Route\s*\(\s*["\']([^"\']+)["\']\s*\)\]'
+        ), "ASP.NET Route")
     ],
 
     "Python": [
-        (re.compile(r'@(?:app|bp|api)\.route\(\s*["\']([^"\']+)["\']\)'), "Flask / FastAPI"),
-        (re.compile(r'path\(\s*["\']([^"\']+)["\']\)'),              "Django / FastAPI"),
-        (re.compile(r'url\(\s*r?["\']([^"\']+)["\']\)'),             "Django (old style)"),
+        (re.compile(r'@(?:app|bp|api)\.route\(\s*["\']([^"\']+)["\']', re.IGNORECASE), "Flask/FastAPI"),
+        (re.compile(r'\bpath\(\s*["\']([^"\']+)["\']', re.IGNORECASE),      "Django"),
+        (re.compile(r'\burl\(\s*r?["\']([^"\']+)["\']', re.IGNORECASE),      "Django"),
     ],
-    "JavaScript":[
-      (re.compile(
-            r'\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*["\']([^"\']+)["\']'
-        ), "Express"),
-
-        # NestJS: @Controller('/foo'), @Get('/bar') и т.п.
+    "JavaScript": [
+        # Express: app.get('/foo', …), router.post('/bar', …)
         (re.compile(
-            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'
-        ), "NestJS"),  
+            r'\b(?:app|router)\.(GET|POST|PUT|DELETE|PATCH|ALL)\s*\(\s*["\']([^"\']+)["\']',
+            re.IGNORECASE
+        ), "Express"),
+        # NestJS: @Controller('/foo') и @Get('/bar')
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)',
+            re.IGNORECASE
+        ), "NestJS"),
     ],
-    "TypeScript":[
-      (re.compile(
-            r'\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*["\']([^"\']+)["\']'
-        ), "Express"),
-
-        # NestJS: @Controller('/foo'), @Get('/bar') и т.п.
+    "TypeScript": [
+        # дублируем те же паттерны, что и для JS
         (re.compile(
-            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'
-        ), "NestJS"),  
+            r'\b(?:app|router)\.(GET|POST|PUT|DELETE|PATCH|ALL)\s*\(\s*["\']([^"\']+)["\']',
+            re.IGNORECASE
+        ), "Express"),
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)',
+            re.IGNORECASE
+        ), "NestJS"),
     ],
     "JavaScript/TypeScript": [
-        # Express: app.get('/foo', ...), router.post('/bar', ...)
+        # Express / Router: app.get('/foo', ...) or router.post(...)
         (re.compile(
             r'\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*["\']([^"\']+)["\']'
         ), "Express"),
-
-        # NestJS: @Controller('/foo'), @Get('/bar') и т.п.
+        # Route chaining: router.route('/foo').get(...).post(...)
         (re.compile(
-            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'
-        ), "NestJS"),
+            r'router\.route\s*\(\s*["\']([^"\']+)["\']\)\s*(?:\.\s*(?:get|post|put|delete|patch)\s*\()+' 
+        ), "Express chaining"),
+        # NestJS decorators
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\s*\(\s*["\']([^"\']+)["\']\s*\)'
+        ), "NestJS")
     ],
 
     "Ruby": [
-        (re.compile(r'\b(?:get|post|put|delete|patch|match)\s+["\']([^"\']+)["\']'), "Rails"),
-        (re.compile(r'resource\s+:\w+,\s*path:\s*["\']([^"\']+)["\']'),          "Rails Resources"),
+        # Rails: get 'foo', to: 'bar#baz'
+        (re.compile(
+            r'\b(?:get|post|put|delete|patch|match)\s+["\']([^"\']+)["\']'
+        ), "Rails"),
+        # Rails resource routes
+        (re.compile(
+            r'resource\s*[:\w]+\s*,\s*path\s*:\s*["\']([^"\']+)["\']'
+        ), "Rails Resources")
     ],
 
     "PHP": [
-        (re.compile(r'Route::(?:get|post|put|delete|patch|any)\(\s*["\']([^"\']+)["\']\)'), "Laravel"),
-        (re.compile(r'@Route\(\s*["\']([^"\']+)["\']\)'),                              "Symfony"),
+        # Laravel: Route::get/post/put/delete/patch
+        (re.compile(
+            r'Route::(get|post|put|delete|patch|any)\s*\(\s*["\']([^"\']+)["\']'
+        ), "Laravel"),
+        # Laravel route groups: prefix/middleware/namespace->group
+        (re.compile(
+            r'Route::(?:prefix|middleware|namespace)\s*\(\s*["\']([^"\']+)["\']\s*\)\s*->\s*group\s*\('
+        ), "Laravel group"),
+        # Laravel resource
+        (re.compile(
+            r'Route::resource\s*\(\s*["\']([^"\']+)["\']'
+        ), "Laravel resource"),
+        # Symfony
+        (re.compile(
+            r'@Route\s*\(\s*["\']([^"\']+)["\']\s*\)'
+        ), "Symfony")
     ],
 
+    # Go (net/http, Gorilla Mux и Gin)
     "Go": [
-        (re.compile(r'\.\s*(Handle|HandleFunc|Get|Post|Put|Delete)\(\s*["\']([^"\']+)["\']\)'), "net/http"),
-        (re.compile(r'router\.(?:GET|POST|PUT|DELETE)\(\s*["\']([^"\']+)["\']\)'),             "Gorilla Mux"),
-    ],
+        # стандартный net/http ServeMux или Gorilla Mux: mux.HandleFunc("/foo", …)
+        (re.compile(
+            r'\.(?:Handle|HandleFunc|GET|POST|PUT|DELETE|PATCH)\s*\(\s*["\']([^"\']+)["\']',
+            re.IGNORECASE
+        ), "net/http"),
+        (re.compile(
+            r'router\.(?:GET|POST|PUT|DELETE)\s*\(\s*["\']([^"\']+)["\']',
+            re.IGNORECASE
+        ), "Gorilla Mux"),
+        # Gin: router.GET("/ping", …), group.POST("/user/:id", …)
+        (re.compile(
+            r'\b(?:[A-Za-z0-9_]+Group|router)\.(GET|POST|PUT|DELETE|PATCH|OPTIONS)\s*\(\s*["\']([^"\']+)["\']',
+            re.IGNORECASE
+        ), "Gin"),
+    ]
 }
 AJAX_PATTERN = re.compile(
     r"(?:XMLHttpRequest|fetch|\$\.ajax)\([^)]+['\"]([^'\"]+)['\"]\)"
