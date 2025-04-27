@@ -46,7 +46,26 @@ ENDPOINT_PATTERNS = {
         (re.compile(r'path\(\s*["\']([^"\']+)["\']\)'),              "Django / FastAPI"),
         (re.compile(r'url\(\s*r?["\']([^"\']+)["\']\)'),             "Django (old style)"),
     ],
+    "JavaScript":[
+      (re.compile(
+            r'\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*["\']([^"\']+)["\']'
+        ), "Express"),
 
+        # NestJS: @Controller('/foo'), @Get('/bar') и т.п.
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'
+        ), "NestJS"),  
+    ],
+    "TypeScript":[
+      (re.compile(
+            r'\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*["\']([^"\']+)["\']'
+        ), "Express"),
+
+        # NestJS: @Controller('/foo'), @Get('/bar') и т.п.
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']+)["\']\)'
+        ), "NestJS"),  
+    ],
     "JavaScript/TypeScript": [
         # Express: app.get('/foo', ...), router.post('/bar', ...)
         (re.compile(

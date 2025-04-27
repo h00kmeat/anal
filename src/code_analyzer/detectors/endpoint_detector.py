@@ -1,19 +1,18 @@
 import os
-import fnmatch
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 from .base import Detector
-from ..patterns import ENDPOINT_PATTERNS, AJAX_PATTERN_EXT
+from ..patterns import ENDPOINT_PATTERNS, AJAX_PATTERN_EXT, ENDPOINT_IGNORE_FILE_PATTERNS
 
 class EndpointDetector(Detector):
     """
     Детектор API-эндпоинтов и AJAX-вызовов.
     Пропускает тестовые и mock-файлы и убирает дубли.
     """
-    # файлы и папки, которые никогда не сканируем
-    IGNORE_GLOBS = [
-        '*.test.*', '*.spec.*', '*__tests__/*',
-        '*mock*', '*.d.ts', '*.min.js'
-    ]
+    # — Убрали IGNORE_GLOBS, теперь используем ENDPOINT_IGNORE_FILE_PATTERNS
+    
+    def __init__(self, directory: str, main_lang: str):
+        super().__init__(directory)
+        self.main_lang = main_lang
 
     def detect(self) -> Dict[str, List[Dict[str, Any]]]:
         endpoints = set()
@@ -22,11 +21,13 @@ class EndpointDetector(Detector):
         for root, _, files in os.walk(self.directory):
             for fname in files:
                 fpath = os.path.join(root, fname)
-                # 1) пропускаем игнор-глоблы
-                if any(fnmatch.fnmatch(fpath, pat) for pat in self.IGNORE_GLOBS):
+                
+                # — Используем ENDPOINT_IGNORE_FILE_PATTERNS (regex) вместо старых glob-паттернов
+                if any(regex.search(fpath) for regex in ENDPOINT_IGNORE_FILE_PATTERNS):
                     continue
-                # 2) оставляем только нужные расширения
-                if not any(fname.endswith(ext) for ext in (
+
+                # только поддерживаемые расширения
+                if not fname.lower().endswith((
                     '.js', '.ts', '.jsx', '.tsx',
                     '.py', '.rb', '.php', '.go'
                 )):
@@ -37,21 +38,20 @@ class EndpointDetector(Detector):
                 except Exception:
                     continue
 
-                # 3) Ищем API-эндпоинты по паттернам для языка
+                # 1) Ищем API-эндпоинты по языковым паттернам
                 patterns = ENDPOINT_PATTERNS.get(self.main_lang, [])
                 for regex, framework in patterns:
                     for match in regex.finditer(text):
-                        # теперь захватываем первую группу
-                        path = match.group(1)
+                        endpoint = match.group(1)  # <-- group(1) holds the path
                         line_no = text[:match.start()].count('\n') + 1
                         endpoints.add((
                             framework,
-                            path,
+                            endpoint,
                             os.path.relpath(fpath, start=self.directory),
                             line_no
                         ))
 
-                # 4) Ищем AJAX-вызовы
+                # 2) Ищем AJAX-запросы
                 for match in AJAX_PATTERN_EXT.finditer(text):
                     url = next(g for g in match.groups() if g)
                     line_no = text[:match.start()].count('\n') + 1
@@ -61,7 +61,6 @@ class EndpointDetector(Detector):
                         url
                     ))
 
-        # Преобразуем в список словарей
         endpoint_list = [
             {'framework': fw, 'endpoint': ep, 'file': fp, 'line': ln}
             for fw, ep, fp, ln in sorted(endpoints)

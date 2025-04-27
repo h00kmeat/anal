@@ -62,34 +62,24 @@ class ReportGenerator:
                 for item in items:
                     print(f"  - {item}")
 
-        # API эндпоинты
-        endpoints = results.get('endpoints', [])
+         # === API ЭНДПОИНТЫ ===
         print("=== API ЭНДПОИНТЫ ===")
-        if not endpoints:
-            print("Не найдено API эндпоинтов")
-        else:
-            grouped = defaultdict(list)
+        endpoints = results.get('endpoints', [])
+        if endpoints:
             for ep in endpoints:
-                grouped[ep.get('framework', 'Unknown')].append(ep)
-            for fw, eps in grouped.items():
-                print(f"-- {fw} --")
-                files_map = defaultdict(list)
-                for ep in eps:
-                    files_map[ep['file']].append(ep)
-                for filepath, lst in files_map.items():
-                    print(format_path(filepath))
-                    for ep in lst:
-                        print(f"  [Line {ep['line']}] {ep['pattern_type']} -> {ep['endpoint']}")
-    
-        # AJAX-запросы
-        ajax_calls = results.get('ajax', [])
-        if ajax_calls:
-            print("=== AJAX-ЗАПРОСЫ ===")
-            for call in ajax_calls:
-                fpath = call.get('file', '')
-                line  = call.get('line', '')
-                url   = call.get('call', '')
-                print(f"- {format_path(fpath)}:{line} -> {url}")
+                # Changed: вместо ep['pattern_type'] используем ep['framework']
+                print(f"  [Line {ep['line']}] {ep['framework']} -> {ep['endpoint']}")
+        else:
+            print("Не найдено API эндпоинтов")
+
+        # === AJAX-ЗАПРОСЫ ===
+        print("\n=== AJAX-ЗАПРОСЫ ===")
+        ajax = results.get('ajax', [])
+        if ajax:
+            for call in ajax:
+                print(f"  {call['file']}:{call['line']} -> {call['call']}")
+        else:
+            print("Не найдено AJAX-вызовов")
 
     def _to_html(self, results: Dict[str, Any]) -> None:
         # Генерация HTML файла и сохранение на диск
