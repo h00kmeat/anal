@@ -6,6 +6,7 @@ from .analyzers.secret_analyzer       import SecretAnalyzer
 from .analyzers.report_generator      import ReportGenerator
 from .detectors.endpoint_detector     import EndpointDetector
 from .detectors.config_detector       import ConfigDetector
+from .detectors.header_detector       import HeaderDetector
 from .patterns                        import CONFIG_PATTERNS, ENDPOINT_PATTERNS
 
 def main():
@@ -45,12 +46,15 @@ def main():
     endpoints   = ep_res.get('endpoints', [])
     ajax_calls  = ep_res.get('ajax', [])
 
-    # 6) Конфиги и секреты в них
+    # 6) HTTP-заголовки
+    hdr_detector = HeaderDetector(args.path, active_langs)
+    headers_info = hdr_detector.detect()
+    # 7) Конфиги и секреты в них
     config_detector = ConfigDetector(args.path, CONFIG_PATTERNS)
     configs         = config_detector.detect()
     config_secrets  = config_detector.secrets
 
-    # 7) Сливаем зависимостями и конфига в единый tech_stack
+    # 8) Сливаем зависимостями и конфига в единый tech_stack
     for cat, items in deps.items():
         if items:
             tech_stack.setdefault(cat, set()).update(items)
@@ -62,7 +66,7 @@ def main():
         else:
             tech_stack.setdefault("backend", set()).add(tech)
 
-    # 8) Собираем окончательные результаты
+    # 9) Собираем окончательные результаты
     results = {
         "languages":      distro,
         "sloc":           {"by_lang": sloc_by_lang, "total": total_sloc},
@@ -71,11 +75,12 @@ def main():
         "secrets":        secrets,
         "endpoints":      endpoints,
         "ajax":           ajax_calls,
+        "headers":        headers_info,
         "configs":        configs,
         "config_secrets": config_secrets,
     }
 
-    # 9) Генерация отчёта
+    # 10) Генерация отчёта
     report = ReportGenerator(args.format)
     report.generate(results)
 

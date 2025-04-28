@@ -121,10 +121,9 @@ ENDPOINT_PATTERNS = {
         # Axios, Fetch, XHR
         (re.compile(r'\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']'), "Axios"),
         (re.compile(r'\b(?:await\s+)?fetch\s*\(\s*["\']([^"\']+)["\']'), "Fetch API"),
+        # XMLHttpRequest: xhr.open("METHOD", "/…", …)
         (re.compile(
-            r'\b(?:new\s+XMLHttpRequest\s*\(|'
-            r'xhr\.open\(\s*["\'](?:GET|POST|PUT|DELETE|PATCH)["\']\s*,\s*'
-            r'["\']([^"\']+)["\']\))'
+            r'\bxhr\.open\(\s*["\'](?:GET|POST|PUT|DELETE|PATCH)["\']\s*,\s*["\']([^"\']+)["\']'
         ), "XMLHttpRequest"),
         # AngularJS ($http)
         (re.compile(
@@ -268,28 +267,376 @@ AJAX_PATTERN = re.compile(
     r"ajax\([^)]+['\"]([^'\"]+)['\"]\)"
 )
 AJAX_PATTERN_EXT = re.compile(
-    # Fetch API (с await и без)
-    r"(?:\bawait\s+)?fetch\(\s*['\"]([^'\"]+)['\"]\s*\)"
-    # Axios: axios.get/post/patch и универсальный axios({...})
-    r"|(?:\bawait\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\s*\)"
-    r"|(?:\bawait\s+)?axios\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"][^}]*}\)"
-    r"|(?:\bawait\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]"
-    r"(?:\s*,[^)]*)?\)"
-    # XHR
+    r"(?:\b(?:await\s+)?fetch\(\s*['\"]([^'\"]+)['\"]\s*\))"
+    # Axios (axios.get/post/… и универсальный axios({ url: … }))
+    r"|(?:\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
+    r"|(?:\b(?:await\s+)?axios\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"][^}]*}\))"
+    # Старый XHR:
     r"|(?:new\s+XMLHttpRequest\s*\(\s*\))"
-    r"|(?:xhr\.open\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"],\s*['\"]([^'\"]+)['\"]\s*,\s*[^)]+\))"
-    # jQuery.ajax и $.get/$.post/$.getJSON
+    r"|(?:xhr\.open\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"],\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
+    r"|(?:\bxhr\.open\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"]\s*,\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
+    # jQuery.ajax и короткие $.get/$.post/$.getJSON:
     r"|(?:\b(?:\$\.ajax|jQuery\.ajax)\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"][^}]*}\))"
-    r"|(?:\b\$(?:get|post|getJSON|ajax)\(\s*['\"]([^'\"]+)['\"]\))"
-    r"|(?:\b\$(?:get|post|ajax)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
-    # AngularJS $http.get/post/…
-    r"|(?:\b\$http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\))"
-    r"|(?:\b\$http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
-    # Modern Angular HttpClient this.http.get/post/…
-    r"|(?:\bthis\.http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\))"
-    r"|(?:\bthis\.http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
+    r"|(?:\b\$(?:get|post|getJSON)\(\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
+    # AngularJS $http:
+    r"|(?:\b\$http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
+    # Modern Angular HttpClient:
+    r"|(?:\bthis\.http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"](?:\s*,[^)]*)?\))"
 )
 PASSWORD_PATTERN = re.compile(r"(password|secret|token|apikey|access_key|client_secret)\s*[:=]\s*['\"]?([a-zA-Z0-9_!@#$%^&*()]+)['\"]?")
+
+HEADER_PATTERNS = {
+    # JavaScript / TypeScript
+    "JavaScript": [
+        # Fetch API: fetch(url, { method: 'POST', headers: { 'X-Auth': '…' } })
+        (
+            re.compile(
+                r"""
+                \bfetch\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    \{\s*[^}]*?method\s*:\s*['"](?P<method>\w+)['"][^}]*?
+                    headers\s*:\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "Fetch API"
+        ),
+        # Axios: axios.post(url, data, { headers: { 'X-Auth': '…' } })
+        (
+            re.compile(
+                r"""
+                \baxios\.(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    [^,]+,\s*
+                    \{\s*[^}]*?headers\s*:\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "Axios"
+        ),
+        # jQuery AJAX: $.ajax({ url: '…', type: 'PUT', headers: { … } })
+        (
+            re.compile(
+                r"""
+                \b(?:\$|jQuery)\.ajax\(\s*
+                    \{\s*[^}]*?url\s*:\s*(?P<url>['"][^'"]+['"])[^}]*?
+                    type\s*:\s*['"](?P<method>\w+)['"][^}]*?
+                    headers\s*:\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "jQuery AJAX"
+        ),
+        # AngularJS $http: $http.post(url, data, { headers: { … } })
+        (
+            re.compile(
+                r"""
+                \b\$http\.(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    [^,]+,\s*
+                    \{\s*[^}]*?headers\s*:\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "AngularJS $http"
+        ),
+        # Angular HttpClient: this.http.post(url, body, { headers: new HttpHeaders({ … }) })
+        (
+            re.compile(
+                r"""
+                \bthis\.http\.(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    [^,]+,\s*
+                    \{\s*[^}]*?headers\s*:\s*new\s+HttpHeaders\(\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "Angular HttpClient"
+        ),
+    ],
+
+    # Python
+    "Python": [
+        # requests: requests.get(url, headers={'X-Auth': '…'})
+        (
+            re.compile(
+                r"""
+                \brequests\.(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    headers\s*=\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "requests"
+        ),
+        # aiohttp: await session.get(url, headers={…})
+        (
+            re.compile(
+                r"""
+                \bawait\s+[\w_]+\.?(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    headers\s*=\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "aiohttp"
+        ),
+        # Flask test client: app.test_client().get(..., headers={…})
+        (
+            re.compile(
+                r"""
+                \bapp\.test_client\(\)\.(?P<method>get|post|put|delete|patch)\(\s*
+                    (?P<url>['"][^'"]+['"])\s*,\s*
+                    headers\s*=\s*(?P<headers>\{[^}]+\})
+                """,
+                re.VERBOSE
+            ),
+            "Flask Test Client"
+        ),
+    ],
+
+    # Go (net/http, Gorilla Mux, Gin)
+    "Go": [
+        # net/http NewRequest: http.NewRequest("POST", url, …)
+        (
+            re.compile(
+                r"""
+                \bhttp\.NewRequest\(\s*
+                    ['"](?P<method>GET|POST|PUT|DELETE|PATCH)['"]\s*,\s*
+                    (?P<url>['"][^'"]+['"])
+                """,
+                re.VERBOSE
+            ),
+            "net/http NewRequest"
+        ),
+        # Go Headers: req.Header.Set("X-Auth", "…")
+        (
+            re.compile(
+                r"""
+                \.Header\.Set\(\s*
+                    ['"](?P<headerName>[^'"]+)['"]\s*,\s*
+                    ['"](?P<headerValue>[^'"]+)['"]\s*
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "net/http Header.Set"
+        ),
+    ],
+
+    # Java (Spring MVC, JAX-RS)
+    "Java": [
+        # Spring @RequestHeader("X-Partner-Id", defaultValue = "…", required = false)
+        (
+            re.compile(
+                r"""
+                @RequestHeader\s*
+                \(\s*
+                    ["'](?P<headerName>[^"']+)["']
+                    (?:\s*,\s*defaultValue\s*=\s*["'](?P<headerValue>[^"']+)["'])?
+                    (?:\s*,\s*required\s*=\s*(?:true|false))?
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "Spring @RequestHeader"
+        ),
+        # Spring Mapping annotations with headers="X-Api-Version=1"
+        (
+            re.compile(
+                r"""
+                @(?:GetMapping|PostMapping|PutMapping|DeleteMapping|PatchMapping)\s*
+                \(\s*[^)]*?headers\s*=\s*["'](?P<headers>[^"']+)["']
+                """,
+                re.VERBOSE
+            ),
+            "Spring Mapping with headers"
+        ),
+        # ResponseEntity.ok().header("X-My-Header", "value")
+        (
+            re.compile(
+                r"""
+                \.header\(\s*
+                    ["'](?P<headerName>[^"']+)["']\s*,\s*
+                    ["'](?P<headerValue>[^"']+)["']\s*
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "Spring ResponseEntity.header"
+        ),
+        # JAX-RS @HeaderParam("X-User-Id")
+        (
+            re.compile(
+                r"""
+                @HeaderParam\s*
+                \(\s*["'](?P<headerName>[^"']+)["']\s*\)
+                """,
+                re.VERBOSE
+            ),
+            "JAX-RS @HeaderParam"
+        ),
+    ],
+
+    # C# (ASP.NET Core)
+    "C#": [
+        # ASP.NET Core middleware: app.Use(async (ctx, next) => { ctx.Response.Headers.Add("X-Auth", "…"); })
+        (
+            re.compile(
+                r"""
+                \bapp\.Use\(\s*async\s*\(\s*context\s*,\s*next\s*\)\s*=>\s*
+                \{\s*context\.Response\.Headers\.Add\(\s*
+                    ["'](?P<headerName>[^"']+)["']\s*,\s*
+                    new\s+StringValues\(\s*["'](?P<headerValue>[^"']+)["']\)\s*
+                \)\s*\}
+                """,
+                re.VERBOSE
+            ),
+            "ASP.NET Core Middleware Headers"
+        ),
+        # HttpClient DefaultRequestHeaders.Add("X-Auth", "…")
+        (
+            re.compile(
+                r"""
+                \bDefaultRequestHeaders\.Add\(\s*
+                    ["'](?P<headerName>[^"']+)["']\s*,\s*
+                    ["'](?P<headerValue>[^"']+)["']\s*
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "HttpClient DefaultRequestHeaders"
+        ),
+    ],
+
+    # PHP (Laravel, Symfony)
+    "PHP": [
+        # Guzzle: $client->request('GET', $url, ['headers' => [...]])
+        (
+            re.compile(
+                r"""
+                \$client->request\(\s*
+                    ['"](?P<method>GET|POST|PUT|DELETE|PATCH)['"]\s*,\s*
+                    [^,]+,\s*
+                    \[\s*'headers'\s*=>\s*(?P<headers>\[[^\]]+\])
+                """,
+                re.VERBOSE
+            ),
+            "Guzzle HTTP"
+        ),
+        # Laravel middleware: ->header('X-Auth', '…')
+        (
+            re.compile(
+                r"""
+                ->header\(\s*
+                    ['"](?P<headerName>[^"']+)['"]\s*,\s*
+                    ['"](?P<headerValue>[^"']+)['"]\s*
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "Laravel Middleware Header"
+        ),
+        # Symfony annotation: @Route(..., defaults={"_format"="json"}, schemes={"https"})
+        (
+            re.compile(
+                r"""
+                @Route\s*\([^\)]*?defaults\s*=\s*\{[^}]+\}\s*,\s*schemes\s*=\s*\{[^}]+\}
+                """,
+                re.VERBOSE
+            ),
+            "Symfony Route with defaults & schemes"
+        ),
+    ],
+
+    # Ruby (Rails, Sinatra)
+    "Ruby": [
+        # Rails before_action: controller.response.set_header('X-Auth', '…')
+        (
+            re.compile(
+                r"""
+                before_action\s+:.*do\s*\|controller\|\s*
+                controller\.response\.set_header\(\s*
+                    ['"](?P<headerName>[^'"]+)['"]\s*,\s*
+                    ['"](?P<headerValue>[^'"]+)['"]\s*
+                \)
+                """,
+                re.VERBOSE
+            ),
+            "Rails before_action header"
+        ),
+        # Sinatra: headers 'X-Auth' => '…'
+        (
+            re.compile(
+                r"""
+                headers\s+['"](?P<headerName>[^'"]+)['"]\s*=>\s*['"](?P<headerValue>[^'"]+)['"]
+                """,
+                re.VERBOSE
+            ),
+            "Sinatra headers DSL"
+        ),
+    ],
+
+    # Rust (Actix-Web, Rocket)
+    "Rust": [
+        # Actix-Web: HttpResponse::Ok().append_header(("X-Auth", "…"))
+        (
+            re.compile(
+                r"""
+                \.append_header\(\(\s*
+                    ['"](?P<headerName>[^'"]+)['"]\s*,\s*
+                    ['"](?P<headerValue>[^'"]+)['"]\s*
+                \)\)
+                """,
+                re.VERBOSE
+            ),
+            "Actix-Web append_header"
+        ),
+        # Rocket: #[header(Name = "X-Auth", Value = "…")]
+        (
+            re.compile(
+                r"""
+                #\[\s*header\s*\(\s*Name\s*=\s*['"](?P<headerName>[^'"]+)['"]\s*,\s*Value\s*=\s*['"](?P<headerValue>[^'"]+)['"]\s*\)\]
+                """,
+                re.VERBOSE
+            ),
+            "Rocket header macro"
+        ),
+    ],
+
+    # Kotlin (Spring Boot / Ktor)
+    "Kotlin": [
+        # Spring MVC Kotlin: @RequestMapping(..., headers={…})
+        (
+            re.compile(
+                r"""
+                @RequestMapping\s*\([^)]+?headers\s*=\s*\{[^}]+\}
+                """,
+                re.VERBOSE
+            ),
+            "Spring MVC Kotlin with headers"
+        ),
+        # Ktor: call.respondText("…", headers = headersOf("X-Auth" to "…"))
+        (
+            re.compile(
+                r"""
+                respond\w*\([^,]+,\s*headers\s*=\s*headersOf\(\s*['"](?P<headerName>[^'"]+)['"]\s*to\s*['"](?P<headerValue>[^'"]+)['"]\)
+                """,
+                re.VERBOSE
+            ),
+            "Ktor headersOf"
+        ),
+    ],
+}
+
+METHOD_PATTERNS = {
+    # Spring WebClient
+    re.compile(r'\bWebClient\.create\(\)\.(get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']'),
+    # RestTemplate.exchange
+    re.compile(r'\brestTemplate\.exchange\(\s*["\']([^"\']+)["\']\s*,\s*HttpMethod\.(GET|POST|PUT|DELETE|PATCH)'),
+    # okhttp3.Request.Builder().method("PUT", …).url("…")
+    re.compile(r'\.method\(\s*["\'](GET|POST|PUT|DELETE|PATCH)["\']\s*,[^\)]*\)\.url\(\s*["\']([^"\']+)["\']'),
+}
 
 DEPENDENCY_FILES = {
     "Java": ["pom.xml", "build.gradle"],

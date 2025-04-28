@@ -88,6 +88,31 @@ class ReportGenerator:
             for ajax in results['ajax']:
                 print(f"  {ajax['file']}:{ajax['line']} -> {ajax['call']}")
 
+        # 7) HTTP МЕТОДЫ
+        http_methods = results.get('http_methods', [])
+        print("\n=== HTTP МЕТОДЫ ===")
+        if http_methods:
+            # ожидаем список словарей вида {'file':..., 'line':..., 'method':..., 'context':...}
+            for m in http_methods:
+                print(f"{m['file']:40} · {m['line']:4}  {m['method']:7}  {m.get('context','')}")
+        else:
+            print("Не найдено HTTP методов")
+
+        # 8) HTTP ЗАГОЛОВКИ
+        headers = results.get('headers', [])
+        print("\n=== HTTP ЗАГОЛОВКИ ===")
+        if headers:
+            # ожидаем список словарей вида {'file':..., 'line':..., 'header':..., 'value':...}
+            for h in headers:
+                hdr = h['headers']
+                val = h.get('value')
+                if val:
+                    print(f"{h['file']:40} · {h['line']:4}  {hdr}: {val}")
+                else:
+                    print(f"{h['file']:40} · {h['line']:4}  {hdr}")
+        else:
+            print("Не найдено HTTP заголовков")
+
     def _to_html(self, results: Dict[str, Any]) -> None:
         # Генерация HTML файла и сохранение на диск
         pass

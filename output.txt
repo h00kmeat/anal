@@ -1,0 +1,3748 @@
+=== РАСПРЕДЕЛЕНИЕ ЯЗЫКОВ ===
+- Other: 30.21%
+- PHP: 0.95%
+- XML: 0.13%
+- HTML: 6.25%
+- CSS: 2.32%
+- JavaScript: 12.68%
+- C#: 10.42%
+- Markdown: 2.72%
+- JSON: 3.23%
+- Shell: 0.20%
+- YAML: 1.18%
+- Docker: 0.07%
+- Java: 0.87%
+- SQL: 0.02%
+- TypeScript: 8.73%
+- Go: 0.25%
+- Ruby: 5.71%
+- Config: 0.02%
+- Python: 13.89%
+- C/C++: 0.14%
+=== SLOC: всего 80363178 ===
+- Other: 74881309 строк
+- PHP: 174524 строк
+- XML: 8868 строк
+- HTML: 275724 строк
+- CSS: 191486 строк
+- JavaScript: 1039541 строк
+- C#: 683551 строк
+- Markdown: 213105 строк
+- JSON: 444236 строк
+- Shell: 3292 строк
+- YAML: 51038 строк
+- Docker: 1159 строк
+- Java: 31641 строк
+- SQL: 285 строк
+- TypeScript: 453878 строк
+- Go: 25105 строк
+- Ruby: 439735 строк
+- Config: 434 строк
+- Python: 1422844 строк
+- C/C++: 21423 строк
+=== ТЕХНОЛОГИЧЕСКИЙ СТЕК ===
+Backend:
+  - Spring Boot
+  - Django
+  - Next.js
+  - Express
+  - React
+  - Laravel
+=== API ЭНДПОИНТЫ ===
+
+Ghost/apps/admin-x-activitypub/src/hooks/use-activity-pub-queries.ts:
+  ·   33  ALL    Fetch API  /ghost/api/admin/site
+
+Ghost/ghost/admin/app/services/whats-new.js:
+  ·   75  ALL    Fetch API  https://ghost.org/changelog.json
+
+Ghost/ghost/core/core/app.js:
+  ·   11  GET    Express    maintenance
+
+Ghost/ghost/core/core/server/services/link-redirection/LinkRedirectsService.js:
+  ·   92  GET    Express    /r/
+
+Ghost/ghost/core/core/server/web/announcement/routes.js:
+  ·   15  GET    Express    /
+
+Ghost/ghost/core/core/server/web/api/endpoints/admin/routes.js:
+  ·   21  GET    Express    /site
+  ·   22  POST   Express    /mail_events
+  ·   25  GET    Express    /config
+  ·   28  GET    Express    /explore
+  ·   31  GET    Express    /posts
+  ·   32  GET    Express    /posts/export
+  ·   34  POST   Express    /posts
+  ·   36  PUT    Express    /posts/bulk
+  ·   37  GET    Express    /posts/:id
+  ·   38  GET    Express    /posts/slug/:slug
+  ·   39  PUT    Express    /posts/:id
+  ·   41  POST   Express    /posts/:id/copy
+  ·   43  GET    Express    /mentions
+  ·   45  GET    Express    /comments/:id
+  ·   46  GET    Express    /comments/:id/replies
+  ·   47  GET    Express    /comments/post/:post_id
+  ·   48  PUT    Express    /comments/:id
+  ·   51  GET    Express    /pages
+  ·   53  PUT    Express    /pages/bulk
+  ·   54  POST   Express    /pages
+  ·   55  GET    Express    /pages/:id
+  ·   56  GET    Express    /pages/slug/:slug
+  ·   57  PUT    Express    /pages/:id
+  ·   59  POST   Express    /pages/:id/copy
+  ·   63  GET    Express    /integrations
+  ·   64  GET    Express    /integrations/:id
+  ·   65  POST   Express    /integrations
+  ·   66  POST   Express    /integrations/:id/api_key/:keyid/refresh
+  ·   67  PUT    Express    /integrations/:id
+  ·   71  PUT    Express    /schedules/:resource/:id
+  ·   74  GET    Express    /settings/routes/yaml
+  ·   75  POST   Express    /settings/routes/yaml
+  ·   82  GET    Express    /settings
+  ·   83  PUT    Express    /settings
+  ·   84  PUT    Express    /settings/verifications/
+  ·   88  GET    Express    /users
+  ·   89  GET    Express    /users/:id
+  ·   90  GET    Express    /users/slug/:slug
+  ·   92  GET    Express    /users/email/:email
+  ·   93  GET    Express    /users/:id/token
+  ·   95  PUT    Express    /users/password
+  ·   96  PUT    Express    /users/owner
+  ·   97  PUT    Express    /users/:id
+  ·   98  PUT    Express    /users/:id/token
+  ·  102  GET    Express    /tags
+  ·  103  GET    Express    /tags/:id
+  ·  104  GET    Express    /tags/slug/:slug
+  ·  105  POST   Express    /tags
+  ·  106  PUT    Express    /tags/:id
+  ·  110  GET    Express    /tiers
+  ·  111  POST   Express    /tiers
+  ·  112  GET    Express    /tiers/:id
+  ·  113  PUT    Express    /tiers/:id
+  ·  116  GET    Express    /members
+  ·  117  POST   Express    /members
+  ·  119  PUT    Express    /members/bulk
+  ·  121  GET    Express    /offers
+  ·  122  POST   Express    /offers
+  ·  123  GET    Express    /offers/:id
+  ·  124  PUT    Express    /offers/:id
+  ·  126  GET    Express    /members/stats/count
+  ·  127  GET    Express    /members/stats/mrr
+  ·  129  GET    Express    /members/events
+  ·  131  GET    Express    /members/upload
+  ·  132  POST   Express    /members/upload
+  ·  139  GET    Express    /members/stripe_connect
+  ·  141  GET    Express    /members/:id
+  ·  142  PUT    Express    /members/:id
+  ·  146  POST   Express    /members/:id/subscriptions/
+  ·  147  PUT    Express    /members/:id/subscriptions/:subscription_id
+  ·  149  GET    Express    /members/:id/signin_urls
+  ·  152  GET    Express    /stats/member_count
+  ·  153  GET    Express    /stats/mrr
+  ·  154  GET    Express    /stats/subscriptions
+  ·  155  GET    Express    /stats/referrers/posts/:id
+  ·  156  GET    Express    /stats/referrers
+  ·  159  GET    Express    /labels
+  ·  160  GET    Express    /labels/:id
+  ·  161  GET    Express    /labels/slug/:slug
+  ·  162  POST   Express    /labels
+  ·  163  PUT    Express    /labels/:id
+  ·  167  GET    Express    /roles/
+  ·  170  GET    Express    /slugs/:type/:name
+  ·  171  GET    Express    /slugs/:type/:name/:id
+  ·  174  GET    Express    /themes/
+  ·  176  GET    Express    /themes/:name/download
+  ·  181  GET    Express    /themes/active
+  ·  186  POST   Express    /themes/upload
+  ·  193  POST   Express    /themes/install
+  ·  195  PUT    Express    /themes/:name/activate
+  ·  206  GET    Express    /notifications
+  ·  207  POST   Express    /notifications
+  ·  211  GET    Express    /db
+  ·  212  POST   Express    /db
+  ·  219  POST   Express    /db/backup
+  ·  224  POST   Express    /db/media/inline
+  ·  230  POST   Express    /slack/test
+  ·  233  GET    Express    /session
+  ·  235  POST   Express    /session
+  ·  241  POST   Express    /session/verify
+  ·  242  PUT    Express    /session/verify
+  ·  245  GET    Express    /identities
+  ·  248  POST   Express    /authentication/password_reset
+  ·  253  PUT    Express    /authentication/password_reset
+  ·  254  POST   Express    /authentication/invitation
+  ·  255  GET    Express    /authentication/invitation
+  ·  256  POST   Express    /authentication/setup
+  ·  257  PUT    Express    /authentication/setup
+  ·  258  GET    Express    /authentication/setup
+  ·  259  POST   Express    /authentication/global_password_reset
+  ·  262  POST   Express    /images/upload
+  ·  270  POST   Express    /media/upload
+  ·  276  PUT    Express    /media/thumbnail/upload
+  ·  284  POST   Express    /files/upload
+  ·  291  GET    Express    /invites
+  ·  292  GET    Express    /invites/:id
+  ·  293  POST   Express    /invites
+  ·  297  GET    Express    /redirects/download
+  ·  298  POST   Express    /redirects/upload
+  ·  306  POST   Express    /webhooks
+  ·  307  PUT    Express    /webhooks/:id
+  ·  311  GET    Express    /oembed
+  ·  314  GET    Express    /actions
+  ·  317  GET    Express    /email_previews/posts/:id
+  ·  319  POST   Express    /email_previews/posts/:id
+  ·  322  GET    Express    /emails
+  ·  323  GET    Express    /emails/:id
+  ·  324  PUT    Express    /emails/:id/retry
+  ·  325  GET    Express    /emails/:id/batches
+  ·  326  GET    Express    /emails/:id/recipient-failures
+  ·  327  GET    Express    /emails/:id/analytics
+  ·  328  PUT    Express    /emails/:id/analytics
+  ·  329  DELETE Express    /emails/analytics
+  ·  332  GET    Express    /snippets
+  ·  333  GET    Express    /snippets/:id
+  ·  334  POST   Express    /snippets
+  ·  335  PUT    Express    /snippets/:id
+  ·  339  GET    Express    /custom_theme_settings
+  ·  340  PUT    Express    /custom_theme_settings
+  ·  342  GET    Express    /newsletters
+  ·  343  GET    Express    /newsletters/:id
+  ·  344  POST   Express    /newsletters
+  ·  345  PUT    Express    /newsletters/verifications/
+  ·  346  PUT    Express    /newsletters/:id
+  ·  348  GET    Express    /links
+  ·  349  PUT    Express    /links/bulk
+  ·  352  GET    Express    /recommendations
+  ·  353  GET    Express    /recommendations/:id
+  ·  354  POST   Express    /recommendations
+  ·  355  POST   Express    /recommendations/check
+  ·  356  PUT    Express    /recommendations/:id
+  ·  360  GET    Express    /incoming_recommendations
+
+Ghost/ghost/core/core/server/web/api/endpoints/content/routes.js:
+  ·   17  GET    Express    /posts
+  ·   18  GET    Express    /posts/:id
+  ·   19  GET    Express    /posts/slug/:slug
+  ·   22  GET    Express    /pages
+  ·   23  GET    Express    /pages/:id
+  ·   24  GET    Express    /pages/slug/:slug
+  ·   27  GET    Express    /authors
+  ·   28  GET    Express    /authors/:id
+  ·   29  GET    Express    /authors/slug/:slug
+  ·   32  GET    Express    /tags
+  ·   33  GET    Express    /tags/:id
+  ·   34  GET    Express    /tags/slug/:slug
+  ·   37  GET    Express    /settings
+  ·   40  GET    Express    /newsletters
+  ·   41  GET    Express    /tiers
+  ·   42  GET    Express    /offers/:id
+  ·   45  GET    Express    /recommendations
+
+Ghost/ghost/core/core/server/web/api/testmode/routes.js:
+  ·   10  GET    Express    /500
+  ·   11  GET    Express    /400
+  ·   12  GET    Express    /404
+  ·   13  GET    Express    /slow/:timeout
+  ·   24  GET    Express    /job/:timeout
+  ·   47  GET    Express    /oneoff/:name
+  ·   61  GET    Express    /schedule/:schedule/:name*?
+  ·  101  GET    Express    /block/:seconds
+  ·  113  GET    Express    /drop
+
+Ghost/ghost/core/core/server/web/comments/routes.js:
+  ·   21  GET    Express    /counts
+  ·   26  GET    Express    /
+  ·   27  GET    Express    /post/:post_id
+  ·   28  GET    Express    /:id
+  ·   29  POST   Express    /
+  ·   30  PUT    Express    /:id
+  ·   31  DELETE Express    /:id
+  ·   33  POST   Express    /:id/like
+  ·   34  DELETE Express    /:id/like
+  ·   35  GET    Express    /:id/replies
+  ·   37  POST   Express    /:id/report
+
+Ghost/ghost/core/core/server/web/webmentions/routes.js:
+  ·   21  POST   Express    /receive
+
+Ghost/ghost/prometheus-metrics/src/MetricsServer.ts:
+  ·   32  GET    Express    /metrics
+
+angular.js/docs/app/assets/js/search-worker.js:
+  ·   20  ALL    XMLHttpRequest None
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/DepositOvernightController.java:
+  ·   25  ALL    Spring MVC api/deposit/overnight
+  ·  128  ALL    Spring MVC /terms
+  ·  234  ALL    Spring MVC /{ibsoOvernightId}/cancel
+  ·  286  ALL    Spring MVC /{overnightId}/document
+  ·  337  ALL    Spring MVC /{overnightId}/document
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/DocumentController.java:
+  ·   25  ALL    Spring MVC api/document
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/FrontController.java:
+  ·   48  ALL    Spring MVC /api
+  ·   88  ALL    Spring MVC /init
+  ·  137  ALL    Spring MVC /instruments
+  ·  182  ALL    Spring MVC /on-deal
+  ·  232  ALL    Spring MVC /accounts
+  ·  283  ALL    Spring MVC /deal
+  ·  342  ALL    Spring MVC /deal
+  ·  400  ALL    Spring MVC /check_limit
+  ·  455  ALL    Spring MVC /deal/history
+  ·  511  ALL    Spring MVC /check-zod
+  ·  560  ALL    Spring MVC /rates
+  ·  604  ALL    Spring MVC /order-cancel
+  ·  661  ALL    Spring MVC /deal/{dealId}
+  ·  712  ALL    Spring MVC /user
+  ·  774  ALL    Spring MVC /user
+  ·  831  ALL    Spring MVC /partners-by-user
+  ·  884  ALL    Spring MVC /personal-setting
+  ·  942  ALL    Spring MVC /personal-setting
+  ·  999  ALL    Spring MVC /margin-group
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/MobileDealController.java:
+  ·   19  ALL    Spring MVC /api/mobile
+  ·   66  ALL    Spring MVC /create-deal
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/MobilePubKeyController.java:
+  ·   20  ALL    Spring MVC /api/mobile
+  ·   60  ALL    Spring MVC /create-pub-key
+  ·  110  ALL    Spring MVC /activate-pub-key
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/OtpController.java:
+  ·   21  ALL    Spring MVC /api
+  ·   45  ALL    Spring MVC /send-sms
+  ·   70  ALL    Spring MVC /check-sms
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/PcServerController.java:
+  ·   14  ALL    Spring MVC /api/pc-server-transaction
+  ·   41  ALL    Spring MVC /callback
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/PhoneController.java:
+  ·   28  ALL    Spring MVC api
+  ·   75  ALL    Spring MVC /additional-phone
+  ·  117  ALL    Spring MVC /additional-phone/{id}
+  ·  162  ALL    Spring MVC /verify-phone
+  ·  207  ALL    Spring MVC /additional-phone
+  ·  252  ALL    Spring MVC /check-phone
+  ·  297  ALL    Spring MVC /status-phone
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/PubKeyController.java:
+  ·   17  ALL    Spring MVC /api
+  ·   64  ALL    Spring MVC /pub-keys
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/RedisController.java:
+  ·   22  ALL    Spring MVC support
+  ·   46  ALL    Spring MVC /redis/{topic}/{key}
+  ·   73  ALL    Spring MVC /redis/{topic}/{key}
+  ·   99  ALL    Spring MVC /redis/{topic}
+  ·  123  ALL    Spring MVC /redis/{topic}/{key}
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/RfqController.java:
+  ·   20  ALL    Spring MVC /api
+  ·   73  ALL    Spring MVC /rfq
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/SupportController.java:
+  ·   24  ALL    Spring MVC support
+  ·   32  ALL    Spring MVC count-active-margin-groups
+  ·   37  ALL    Spring MVC get-all-active-margin-groups
+  ·   46  ALL    Spring MVC count-active-sessions
+  ·   51  ALL    Spring MVC get-all-active-sessions
+  ·   60  ALL    Spring MVC active-margin-group
+  ·   68  ALL    Spring MVC clean-redis-cache
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/controller/SystemInfoController.java:
+  ·   15  ALL    Spring MVC api/system-info
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/webclient/OperationClient.java:
+  ·   14  ALL    Spring MVC /bank-deal
+
+another_code/fxms-aggregator-9a59f217ce274c1840b833033ee785926605f853/src/main/java/su/atb/msa/forex/fxmsaggregator/webclient/StorageClient.java:
+  ·   14  ALL    Spring MVC /files/{id}/{attach}
+
+another_code/fxms-deposits-5c1b355ef8b040a80b5ae54825dba0f21391a766/fxms-deposits-client/src/main/java/su/atb/msa/forex/fxms_deposits/controller/OvernightController.java:
+  ·   24  ALL    Spring MVC /overnight
+  ·   98  ALL    Spring MVC /{ibsoOvernightId}
+  ·  196  ALL    Spring MVC /{overnightId}
+
+another_code/fxms-ibso-integration-03f742f7b699ffcf40fac254c62a7d2658678546/fxms-ibso-integration-client/src/main/java/su/atb/msa/forex/fxmsibsointegration/api/IbsoController.java:
+  ·  116  ALL    Spring MVC /conversation-info/{ibsoPartnerId}
+  ·  181  ALL    Spring MVC /conversation-sub
+  ·  246  ALL    Spring MVC /conversation-deal
+  ·  311  ALL    Spring MVC /conversation-hold
+  ·  383  ALL    Spring MVC /deal-status
+  ·  448  ALL    Spring MVC /conversation-unhold/{holdId}
+  ·  513  ALL    Spring MVC /hold
+  ·  577  ALL    Spring MVC /ibso-user/{adLogin}
+  ·  646  ALL    Spring MVC /partner-info
+  ·  718  ALL    Spring MVC /account-list
+  ·  791  ALL    Spring MVC /conversation-info
+  ·  878  ALL    Spring MVC /bank-template
+  ·  964  ALL    Spring MVC /bank-info
+  · 1022  ALL    Spring MVC /bank-deal
+  · 1077  ALL    Spring MVC /conversion-info-ib/{clPartBank}
+  · 1125  ALL    Spring MVC /deposit/overnight
+  · 1172  ALL    Spring MVC /deposit/overnight
+  · 1220  ALL    Spring MVC /deposit/overnight/{ibsoOvernightId}/cancel
+  · 1268  ALL    Spring MVC /deposit/overnight/{ibsoOvernightId}/status
+  · 1324  ALL    Spring MVC /deposit/overnight-schedule
+
+another_code/fxms-ibso-integration-03f742f7b699ffcf40fac254c62a7d2658678546/fxms-ibso-integration-service/src/main/java/su/atb/msa/forex/fxmsibsointegration/controller/SupportController.java:
+  ·   24  ALL    Spring MVC test-event
+
+code_analysis_tool/src/code_analyzer/patterns.py:
+  ·   83  ALL    Flask/FastAPI /…
+  ·   89  ALL    Django path …
+  ·   92  ALL    Django url …
+
+code_analysis_tool/venv/lib/python3.13/site-packages/pip/_vendor/rich/_export_format.py:
+  ·   28  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2
+  ·   29  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff
+  ·   36  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2
+  ·   37  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff
+
+example_code/js/edit_area/edit_area_full.js:
+  ·    8  ALL    XMLHttpRequest None
+
+example_code/js/edit_area/edit_area_loader.js:
+  ·  677  ALL    XMLHttpRequest None
+
+example_code/js/firebug-lite.js:
+  · 1208  ALL    XMLHttpRequest None
+
+example_code/js/jquery-1.3.2.min.js:
+  ·   19  ALL    XMLHttpRequest None
+
+example_code/superfish/js/jquery-1.2.6.min.js:
+  ·   27  ALL    XMLHttpRequest None
+
+fastapi/docs_src/additional_responses/tutorial001.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_responses/tutorial002.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_responses/tutorial003.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_responses/tutorial004.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_status_codes/tutorial001.py:
+  ·   11  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_status_codes/tutorial001_an.py:
+  ·   12  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_status_codes/tutorial001_an_py310.py:
+  ·   11  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_status_codes/tutorial001_an_py39.py:
+  ·   11  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/additional_status_codes/tutorial001_py310.py:
+  ·    9  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/advanced_middleware/tutorial001.py:
+  ·    9  ALL    Flask/FastAPI /
+
+fastapi/docs_src/advanced_middleware/tutorial002.py:
+  ·   11  ALL    Flask/FastAPI /
+
+fastapi/docs_src/advanced_middleware/tutorial003.py:
+  ·    9  ALL    Flask/FastAPI /
+
+fastapi/docs_src/app_testing/app_b/main.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+  ·   31  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/app_testing/app_b_an/main.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+  ·   32  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/app_testing/app_b_an_py310/main.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+  ·   31  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/app_testing/app_b_an_py39/main.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+  ·   31  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/app_testing/app_b_py310/main.py:
+  ·   20  ALL    Flask/FastAPI /items/{item_id}
+  ·   29  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/app_testing/main.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/app_testing/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /
+
+fastapi/docs_src/app_testing/tutorial002.py:
+  ·    8  ALL    Flask/FastAPI /
+
+fastapi/docs_src/app_testing/tutorial003.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/async_tests/main.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/background_tasks/tutorial001.py:
+  ·   12  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/background_tasks/tutorial002.py:
+  ·   20  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/background_tasks/tutorial002_an.py:
+  ·   21  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/background_tasks/tutorial002_an_py310.py:
+  ·   20  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/background_tasks/tutorial002_an_py39.py:
+  ·   20  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/background_tasks/tutorial002_py310.py:
+  ·   18  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/docs_src/behind_a_proxy/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /app
+
+fastapi/docs_src/behind_a_proxy/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /app
+
+fastapi/docs_src/behind_a_proxy/tutorial003.py:
+  ·   12  ALL    Flask/FastAPI /app
+
+fastapi/docs_src/behind_a_proxy/tutorial004.py:
+  ·   13  ALL    Flask/FastAPI /app
+
+fastapi/docs_src/bigger_applications/app/internal/admin.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app/main.py:
+  ·   21  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app/routers/items.py:
+  ·   16  ALL    Flask/FastAPI /
+  ·   21  ALL    Flask/FastAPI /{item_id}
+  ·   28  ALL    Flask/FastAPI /{item_id}
+
+fastapi/docs_src/bigger_applications/app/routers/users.py:
+  ·    6  ALL    Flask/FastAPI /users/
+  ·   11  ALL    Flask/FastAPI /users/me
+  ·   16  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/bigger_applications/app_an/internal/admin.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app_an/main.py:
+  ·   21  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app_an/routers/items.py:
+  ·   16  ALL    Flask/FastAPI /
+  ·   21  ALL    Flask/FastAPI /{item_id}
+  ·   28  ALL    Flask/FastAPI /{item_id}
+
+fastapi/docs_src/bigger_applications/app_an/routers/users.py:
+  ·    6  ALL    Flask/FastAPI /users/
+  ·   11  ALL    Flask/FastAPI /users/me
+  ·   16  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/bigger_applications/app_an_py39/internal/admin.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app_an_py39/main.py:
+  ·   21  ALL    Flask/FastAPI /
+
+fastapi/docs_src/bigger_applications/app_an_py39/routers/items.py:
+  ·   16  ALL    Flask/FastAPI /
+  ·   21  ALL    Flask/FastAPI /{item_id}
+  ·   28  ALL    Flask/FastAPI /{item_id}
+
+fastapi/docs_src/bigger_applications/app_an_py39/routers/users.py:
+  ·    6  ALL    Flask/FastAPI /users/
+  ·   11  ALL    Flask/FastAPI /users/me
+  ·   16  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/body/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/body/tutorial001_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/body/tutorial002.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/body/tutorial002_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/body/tutorial003.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body/tutorial003_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body/tutorial004.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body/tutorial004_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_fields/tutorial001.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_fields/tutorial001_an.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_fields/tutorial001_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_fields/tutorial001_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_fields/tutorial001_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial001.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial001_an.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial001_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial001_an_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial001_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial002.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial002_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial003.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial003_an.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial003_an_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial003_an_py39.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial003_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial004.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial004_an.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial004_an_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial004_an_py39.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial004_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial005.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial005_an.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial005_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial005_an_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_multiple_params/tutorial005_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial001_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial002.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial002_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial002_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial003.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial003_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial003_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial004.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial004_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial004_py39.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial005.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial005_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial005_py39.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial006.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial006_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial006_py39.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_nested_models/tutorial007.py:
+  ·   30  ALL    Flask/FastAPI /offers/
+
+fastapi/docs_src/body_nested_models/tutorial007_py310.py:
+  ·   28  ALL    Flask/FastAPI /offers/
+
+fastapi/docs_src/body_nested_models/tutorial007_py39.py:
+  ·   30  ALL    Flask/FastAPI /offers/
+
+fastapi/docs_src/body_nested_models/tutorial008.py:
+  ·   14  ALL    Flask/FastAPI /images/multiple/
+
+fastapi/docs_src/body_nested_models/tutorial008_py39.py:
+  ·   12  ALL    Flask/FastAPI /images/multiple/
+
+fastapi/docs_src/body_nested_models/tutorial009.py:
+  ·    8  ALL    Flask/FastAPI /index-weights/
+
+fastapi/docs_src/body_nested_models/tutorial009_py39.py:
+  ·    6  ALL    Flask/FastAPI /index-weights/
+
+fastapi/docs_src/body_updates/tutorial001.py:
+  ·   25  ALL    Flask/FastAPI /items/{item_id}
+  ·   30  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_updates/tutorial001_py310.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+  ·   28  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_updates/tutorial001_py39.py:
+  ·   25  ALL    Flask/FastAPI /items/{item_id}
+  ·   30  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_updates/tutorial002.py:
+  ·   25  ALL    Flask/FastAPI /items/{item_id}
+  ·   30  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_updates/tutorial002_py310.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+  ·   28  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/body_updates/tutorial002_py39.py:
+  ·   25  ALL    Flask/FastAPI /items/{item_id}
+  ·   30  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/conditional_openapi/tutorial001.py:
+  ·   14  ALL    Flask/FastAPI /
+
+fastapi/docs_src/configure_swagger_ui/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/configure_swagger_ui/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/configure_swagger_ui/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/cookie_param_models/tutorial001.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial001_an.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial001_an_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial001_an_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial001_py310.py:
+  ·   13  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_an.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_an_py310.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_pv1.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_pv1_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_pv1_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_pv1_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_pv1_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_param_models/tutorial002_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_params/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_params/tutorial001_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_params/tutorial001_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_params/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cookie_params/tutorial001_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/cors/tutorial001.py:
+  ·   22  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_docs_ui/tutorial001.py:
+  ·   11  ALL    Flask/FastAPI /docs
+  ·   27  ALL    Flask/FastAPI /redoc
+  ·   36  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/custom_docs_ui/tutorial002.py:
+  ·   14  ALL    Flask/FastAPI /docs
+  ·   30  ALL    Flask/FastAPI /redoc
+  ·   39  ALL    Flask/FastAPI /users/{username}
+
+fastapi/docs_src/custom_request_and_route/tutorial001.py:
+  ·   33  ALL    Flask/FastAPI /sum
+
+fastapi/docs_src/custom_request_and_route/tutorial002.py:
+  ·   27  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_request_and_route/tutorial003.py:
+  ·   29  ALL    Flask/FastAPI /
+  ·   34  ALL    Flask/FastAPI /timed
+
+fastapi/docs_src/custom_response/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/custom_response/tutorial001b.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/custom_response/tutorial002.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/custom_response/tutorial003.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/custom_response/tutorial004.py:
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/custom_response/tutorial005.py:
+  ·    7  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial006.py:
+  ·    7  ALL    Flask/FastAPI /typer
+
+fastapi/docs_src/custom_response/tutorial006b.py:
+  ·    7  ALL    Flask/FastAPI /fastapi
+
+fastapi/docs_src/custom_response/tutorial006c.py:
+  ·    7  ALL    Flask/FastAPI /pydantic
+
+fastapi/docs_src/custom_response/tutorial007.py:
+  ·   12  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial008.py:
+  ·    8  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial009.py:
+  ·    8  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial009b.py:
+  ·    8  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial009c.py:
+  ·   17  ALL    Flask/FastAPI /
+
+fastapi/docs_src/custom_response/tutorial010.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dataclasses/tutorial001.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dataclasses/tutorial002.py:
+  ·   19  ALL    Flask/FastAPI /items/next
+
+fastapi/docs_src/dataclasses/tutorial003.py:
+  ·   23  ALL    Flask/FastAPI /authors/{author_id}/items/
+  ·   28  ALL    Flask/FastAPI /authors/
+
+fastapi/docs_src/debugging/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /
+
+fastapi/docs_src/dependencies/tutorial001.py:
+  ·   14  ALL    Flask/FastAPI /items/
+  ·   19  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_02_an.py:
+  ·   18  ALL    Flask/FastAPI /items/
+  ·   23  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_02_an_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_02_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_an.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_an_py310.py:
+  ·   12  ALL    Flask/FastAPI /items/
+  ·   17  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_an_py39.py:
+  ·   14  ALL    Flask/FastAPI /items/
+  ·   19  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial001_py310.py:
+  ·   10  ALL    Flask/FastAPI /items/
+  ·   15  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial002.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial002_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial002_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial002_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial002_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial003.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial003_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial003_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial003_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial003_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial004.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial004_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial004_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial004_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial004_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial005.py:
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial005_an.py:
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial005_an_py310.py:
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial005_an_py39.py:
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial005_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial006.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial006_an.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial006_an_py39.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/dependencies/tutorial008b.py:
+  ·   23  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008b_an.py:
+  ·   24  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008b_an_py39.py:
+  ·   25  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008c.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008c_an.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008c_an_py39.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008d.py:
+  ·   18  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008d_an.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial008d_an_py39.py:
+  ·   20  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/dependencies/tutorial011.py:
+  ·   19  ALL    Flask/FastAPI /query-checker/
+
+fastapi/docs_src/dependencies/tutorial011_an.py:
+  ·   20  ALL    Flask/FastAPI /query-checker/
+
+fastapi/docs_src/dependencies/tutorial011_an_py39.py:
+  ·   21  ALL    Flask/FastAPI /query-checker/
+
+fastapi/docs_src/dependencies/tutorial012.py:
+  ·   18  ALL    Flask/FastAPI /items/
+  ·   23  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial012_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+  ·   24  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependencies/tutorial012_an_py39.py:
+  ·   19  ALL    Flask/FastAPI /items/
+  ·   24  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependency_testing/tutorial001.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependency_testing/tutorial001_an.py:
+  ·   16  ALL    Flask/FastAPI /items/
+  ·   21  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependency_testing/tutorial001_an_py310.py:
+  ·   13  ALL    Flask/FastAPI /items/
+  ·   18  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependency_testing/tutorial001_an_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/dependency_testing/tutorial001_py310.py:
+  ·   11  ALL    Flask/FastAPI /items/
+  ·   16  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/encoder/tutorial001.py:
+  ·   20  ALL    Flask/FastAPI /items/{id}
+
+fastapi/docs_src/encoder/tutorial001_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/{id}
+
+fastapi/docs_src/events/tutorial001.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/events/tutorial002.py:
+  ·   12  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/events/tutorial003.py:
+  ·   25  ALL    Flask/FastAPI /predict
+
+fastapi/docs_src/extending_openapi/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/extra_data_types/tutorial001.py:
+  ·   10  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_data_types/tutorial001_an.py:
+  ·   11  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_data_types/tutorial001_an_py310.py:
+  ·   10  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_data_types/tutorial001_an_py39.py:
+  ·   10  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_data_types/tutorial001_py310.py:
+  ·    9  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_models/tutorial001.py:
+  ·   40  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/extra_models/tutorial001_py310.py:
+  ·   38  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/extra_models/tutorial002.py:
+  ·   38  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/extra_models/tutorial002_py310.py:
+  ·   36  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/extra_models/tutorial003.py:
+  ·   33  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_models/tutorial003_py310.py:
+  ·   33  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/extra_models/tutorial004.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/extra_models/tutorial004_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/extra_models/tutorial005.py:
+  ·    8  ALL    Flask/FastAPI /keyword-weights/
+
+fastapi/docs_src/extra_models/tutorial005_py39.py:
+  ·    6  ALL    Flask/FastAPI /keyword-weights/
+
+fastapi/docs_src/first_steps/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/first_steps/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /
+
+fastapi/docs_src/generate_clients/tutorial001.py:
+  ·   18  ALL    Flask/FastAPI /items/
+  ·   23  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/generate_clients/tutorial001_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/generate_clients/tutorial002.py:
+  ·   23  ALL    Flask/FastAPI /items/
+  ·   28  ALL    Flask/FastAPI /items/
+  ·   36  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/generate_clients/tutorial002_py39.py:
+  ·   21  ALL    Flask/FastAPI /items/
+  ·   26  ALL    Flask/FastAPI /items/
+  ·   34  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/generate_clients/tutorial003.py:
+  ·   29  ALL    Flask/FastAPI /items/
+  ·   34  ALL    Flask/FastAPI /items/
+  ·   42  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/generate_clients/tutorial003_py39.py:
+  ·   27  ALL    Flask/FastAPI /items/
+  ·   32  ALL    Flask/FastAPI /items/
+  ·   40  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/handling_errors/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/handling_errors/tutorial002.py:
+  ·    8  ALL    Flask/FastAPI /items-header/{item_id}
+
+fastapi/docs_src/handling_errors/tutorial003.py:
+  ·   21  ALL    Flask/FastAPI /unicorns/{name}
+
+fastapi/docs_src/handling_errors/tutorial004.py:
+  ·   19  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/handling_errors/tutorial005.py:
+  ·   23  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/handling_errors/tutorial006.py:
+  ·   24  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/header_param_models/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial001_an.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial001_an_py310.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial001_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial001_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial001_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_an.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_an_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_an_py39.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1_an.py:
+  ·   21  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1_an_py310.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1_an_py39.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_pv1_py39.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_py310.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial002_py39.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003_an.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003_an_py310.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_param_models/tutorial003_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial001_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial001_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial001_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial002.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial002_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial002_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial002_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial002_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/header_params/tutorial003_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/metadata/tutorial001.py:
+  ·   36  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/metadata/tutorial001_1.py:
+  ·   36  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/metadata/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/metadata/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/metadata/tutorial004.py:
+  ·   21  ALL    Flask/FastAPI /users/
+  ·   26  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/openapi_callbacks/tutorial001.py:
+  ·   35  ALL    Flask/FastAPI /invoices/
+
+fastapi/docs_src/openapi_webhooks/tutorial001.py:
+  ·   23  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial002.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial004.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial005.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial006.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial007.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_advanced_configuration/tutorial007_pv1.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial001_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial001_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial002.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+  ·   27  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/path_operation_configuration/tutorial002_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+  ·   25  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/path_operation_configuration/tutorial002_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+  ·   27  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/path_operation_configuration/tutorial002b.py:
+  ·   13  ALL    Flask/FastAPI /items/
+  ·   18  ALL    Flask/FastAPI /users/
+
+fastapi/docs_src/path_operation_configuration/tutorial003.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial003_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial003_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial004.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial004_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial004_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial005.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial005_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial005_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/path_operation_configuration/tutorial006.py:
+  ·    6  ALL    Flask/FastAPI /items/
+  ·   11  ALL    Flask/FastAPI /users/
+  ·   16  ALL    Flask/FastAPI /elements/
+
+fastapi/docs_src/path_params/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /users/me
+  ·   11  ALL    Flask/FastAPI /users/{user_id}
+
+fastapi/docs_src/path_params/tutorial003b.py:
+  ·    6  ALL    Flask/FastAPI /users
+  ·   11  ALL    Flask/FastAPI /users
+
+fastapi/docs_src/path_params/tutorial004.py:
+  ·    6  ALL    Flask/FastAPI /files/{file_path:path}
+
+fastapi/docs_src/path_params/tutorial005.py:
+  ·   15  ALL    Flask/FastAPI /models/{model_name}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial001_an.py:
+  ·    9  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial001_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial001_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial002_an.py:
+  ·    7  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial002_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial003.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial003_an.py:
+  ·    7  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial003_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial004.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial004_an.py:
+  ·    7  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial004_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial005.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial005_an.py:
+  ·    7  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial005_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial006.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial006_an.py:
+  ·    7  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/path_params_numeric_validations/tutorial006_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_param_models/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial001_an.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial001_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial001_an_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial001_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial001_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_an.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_an_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1_an.py:
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1_an_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1_an_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1_py310.py:
+  ·   19  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_pv1_py39.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_py310.py:
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_param_models/tutorial002_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params/tutorial002.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial002_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial003.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial003_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial004.py:
+  ·    8  ALL    Flask/FastAPI /users/{user_id}/items/{item_id}
+
+fastapi/docs_src/query_params/tutorial004_py310.py:
+  ·    6  ALL    Flask/FastAPI /users/{user_id}/items/{item_id}
+
+fastapi/docs_src/query_params/tutorial005.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial006.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial006_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params/tutorial006b.py:
+  ·    8  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/query_params_str_validations/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial001_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial002.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial002_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial002_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial002_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial003.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial003_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial003_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial003_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial003_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial004_regex_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial005.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial005_an.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial005_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006_an.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006c.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006c_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006c_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006c_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial006c_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial007.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial007_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial007_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial007_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial007_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial008.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial008_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial008_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial008_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial008_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial009.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial009_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial009_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial009_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial009_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial010.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial010_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial010_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial010_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial010_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial011_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial012.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial012_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial012_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial012_py39.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial013.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial013_an.py:
+  ·    7  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial013_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial014.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial014_an.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial014_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial014_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial014_py310.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial015_an.py:
+  ·   23  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial015_an_py310.py:
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/query_params_str_validations/tutorial015_an_py39.py:
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/request_files/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /files/
+  ·   11  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_02.py:
+  ·    8  ALL    Flask/FastAPI /files/
+  ·   16  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_02_an.py:
+  ·    9  ALL    Flask/FastAPI /files/
+  ·   17  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_02_an_py310.py:
+  ·    8  ALL    Flask/FastAPI /files/
+  ·   16  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_02_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /files/
+  ·   16  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_02_py310.py:
+  ·    6  ALL    Flask/FastAPI /files/
+  ·   14  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_03.py:
+  ·    6  ALL    Flask/FastAPI /files/
+  ·   11  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_03_an.py:
+  ·    7  ALL    Flask/FastAPI /files/
+  ·   12  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_03_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /files/
+  ·   13  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_an.py:
+  ·    7  ALL    Flask/FastAPI /files/
+  ·   12  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /files/
+  ·   13  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/docs_src/request_files/tutorial002.py:
+  ·    9  ALL    Flask/FastAPI /files/
+  ·   14  ALL    Flask/FastAPI /uploadfiles/
+  ·   19  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial002_an.py:
+  ·   10  ALL    Flask/FastAPI /files/
+  ·   15  ALL    Flask/FastAPI /uploadfiles/
+  ·   20  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial002_an_py39.py:
+  ·    9  ALL    Flask/FastAPI /files/
+  ·   14  ALL    Flask/FastAPI /uploadfiles/
+  ·   19  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial002_py39.py:
+  ·    7  ALL    Flask/FastAPI /files/
+  ·   12  ALL    Flask/FastAPI /uploadfiles/
+  ·   17  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial003.py:
+  ·    9  ALL    Flask/FastAPI /files/
+  ·   16  ALL    Flask/FastAPI /uploadfiles/
+  ·   23  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial003_an.py:
+  ·   10  ALL    Flask/FastAPI /files/
+  ·   17  ALL    Flask/FastAPI /uploadfiles/
+  ·   26  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial003_an_py39.py:
+  ·    9  ALL    Flask/FastAPI /files/
+  ·   16  ALL    Flask/FastAPI /uploadfiles/
+  ·   25  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_files/tutorial003_py39.py:
+  ·    7  ALL    Flask/FastAPI /files/
+  ·   14  ALL    Flask/FastAPI /uploadfiles/
+  ·   21  ALL    Flask/FastAPI /
+
+fastapi/docs_src/request_form_models/tutorial001.py:
+  ·   12  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial001_an.py:
+  ·   13  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial001_an_py39.py:
+  ·   14  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002.py:
+  ·   13  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002_an.py:
+  ·   14  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002_an_py39.py:
+  ·   15  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002_pv1.py:
+  ·   15  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002_pv1_an.py:
+  ·   16  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_form_models/tutorial002_pv1_an_py39.py:
+  ·   17  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_forms/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_forms/tutorial001_an.py:
+  ·    7  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_forms/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /login/
+
+fastapi/docs_src/request_forms_and_files/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /files/
+
+fastapi/docs_src/request_forms_and_files/tutorial001_an.py:
+  ·    7  ALL    Flask/FastAPI /files/
+
+fastapi/docs_src/request_forms_and_files/tutorial001_an_py39.py:
+  ·    8  ALL    Flask/FastAPI /files/
+
+fastapi/docs_src/response_change_status_code/tutorial001.py:
+  ·    8  ALL    Flask/FastAPI /get-or-create-task/{task_id}
+
+fastapi/docs_src/response_cookies/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /cookie/
+
+fastapi/docs_src/response_cookies/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /cookie-and-object/
+
+fastapi/docs_src/response_directly/tutorial001.py:
+  ·   19  ALL    Flask/FastAPI /items/{id}
+
+fastapi/docs_src/response_directly/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /legacy/
+
+fastapi/docs_src/response_headers/tutorial001.py:
+  ·    7  ALL    Flask/FastAPI /headers/
+
+fastapi/docs_src/response_headers/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /headers-and-object/
+
+fastapi/docs_src/response_model/tutorial001.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial001_01.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial001_01_py310.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial001_01_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial001_py310.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial001_py39.py:
+  ·   17  ALL    Flask/FastAPI /items/
+  ·   22  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_model/tutorial002.py:
+  ·   17  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial002_py310.py:
+  ·   15  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial003.py:
+  ·   22  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial003_01.py:
+  ·   19  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial003_01_py310.py:
+  ·   17  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial003_02.py:
+  ·    7  ALL    Flask/FastAPI /portal
+
+fastapi/docs_src/response_model/tutorial003_03.py:
+  ·    7  ALL    Flask/FastAPI /teleport
+
+fastapi/docs_src/response_model/tutorial003_04.py:
+  ·    9  ALL    Flask/FastAPI /portal
+
+fastapi/docs_src/response_model/tutorial003_04_py310.py:
+  ·    7  ALL    Flask/FastAPI /portal
+
+fastapi/docs_src/response_model/tutorial003_05.py:
+  ·    9  ALL    Flask/FastAPI /portal
+
+fastapi/docs_src/response_model/tutorial003_05_py310.py:
+  ·    7  ALL    Flask/FastAPI /portal
+
+fastapi/docs_src/response_model/tutorial003_py310.py:
+  ·   22  ALL    Flask/FastAPI /user/
+
+fastapi/docs_src/response_model/tutorial004.py:
+  ·   24  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/response_model/tutorial004_py310.py:
+  ·   22  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/response_model/tutorial004_py39.py:
+  ·   24  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/response_model/tutorial005.py:
+  ·   28  ALL    Flask/FastAPI /items/{item_id}/name
+  ·   37  ALL    Flask/FastAPI /items/{item_id}/public
+
+fastapi/docs_src/response_model/tutorial005_py310.py:
+  ·   26  ALL    Flask/FastAPI /items/{item_id}/name
+  ·   35  ALL    Flask/FastAPI /items/{item_id}/public
+
+fastapi/docs_src/response_model/tutorial006.py:
+  ·   28  ALL    Flask/FastAPI /items/{item_id}/name
+  ·   37  ALL    Flask/FastAPI /items/{item_id}/public
+
+fastapi/docs_src/response_model/tutorial006_py310.py:
+  ·   26  ALL    Flask/FastAPI /items/{item_id}/name
+  ·   35  ALL    Flask/FastAPI /items/{item_id}/public
+
+fastapi/docs_src/response_status_code/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/response_status_code/tutorial002.py:
+  ·    6  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/schema_extra_example/tutorial001.py:
+  ·   29  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial001_pv1.py:
+  ·   28  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial001_pv1_py310.py:
+  ·   26  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial001_py310.py:
+  ·   27  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial002.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial002_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial003.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial003_an.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial003_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial003_an_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial003_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial004.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial004_an.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial004_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial004_an_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial004_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial005.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial005_an.py:
+  ·   17  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial005_an_py310.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial005_an_py39.py:
+  ·   16  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/schema_extra_example/tutorial005_py310.py:
+  ·   14  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/security/tutorial001.py:
+  ·    9  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/security/tutorial001_an.py:
+  ·   10  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/security/tutorial001_an_py39.py:
+  ·   11  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/security/tutorial002.py:
+  ·   30  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial002_an.py:
+  ·   31  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial002_an_py310.py:
+  ·   30  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial002_an_py39.py:
+  ·   30  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial002_py310.py:
+  ·   28  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial003.py:
+  ·   75  ALL    Flask/FastAPI /token
+  ·   88  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial003_an.py:
+  ·   78  ALL    Flask/FastAPI /token
+  ·   91  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial003_an_py310.py:
+  ·   77  ALL    Flask/FastAPI /token
+  ·   90  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial003_an_py39.py:
+  ·   77  ALL    Flask/FastAPI /token
+  ·   90  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial003_py310.py:
+  ·   73  ALL    Flask/FastAPI /token
+  ·   86  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial004.py:
+  ·  116  ALL    Flask/FastAPI /token
+  ·  134  ALL    Flask/FastAPI /users/me/
+  ·  139  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/docs_src/security/tutorial004_an.py:
+  ·  119  ALL    Flask/FastAPI /token
+  ·  137  ALL    Flask/FastAPI /users/me/
+  ·  144  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/docs_src/security/tutorial004_an_py310.py:
+  ·  118  ALL    Flask/FastAPI /token
+  ·  136  ALL    Flask/FastAPI /users/me/
+  ·  143  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/docs_src/security/tutorial004_an_py39.py:
+  ·  118  ALL    Flask/FastAPI /token
+  ·  136  ALL    Flask/FastAPI /users/me/
+  ·  143  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/docs_src/security/tutorial004_py310.py:
+  ·  115  ALL    Flask/FastAPI /token
+  ·  133  ALL    Flask/FastAPI /users/me/
+  ·  138  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/docs_src/security/tutorial005.py:
+  ·  147  ALL    Flask/FastAPI /token
+  ·  162  ALL    Flask/FastAPI /users/me/
+  ·  167  ALL    Flask/FastAPI /users/me/items/
+  ·  174  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial005_an.py:
+  ·  148  ALL    Flask/FastAPI /token
+  ·  163  ALL    Flask/FastAPI /users/me/
+  ·  170  ALL    Flask/FastAPI /users/me/items/
+  ·  177  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial005_an_py310.py:
+  ·  147  ALL    Flask/FastAPI /token
+  ·  162  ALL    Flask/FastAPI /users/me/
+  ·  169  ALL    Flask/FastAPI /users/me/items/
+  ·  176  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial005_an_py39.py:
+  ·  147  ALL    Flask/FastAPI /token
+  ·  162  ALL    Flask/FastAPI /users/me/
+  ·  169  ALL    Flask/FastAPI /users/me/items/
+  ·  176  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial005_py310.py:
+  ·  146  ALL    Flask/FastAPI /token
+  ·  161  ALL    Flask/FastAPI /users/me/
+  ·  166  ALL    Flask/FastAPI /users/me/items/
+  ·  173  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial005_py39.py:
+  ·  147  ALL    Flask/FastAPI /token
+  ·  162  ALL    Flask/FastAPI /users/me/
+  ·  167  ALL    Flask/FastAPI /users/me/items/
+  ·  174  ALL    Flask/FastAPI /status/
+
+fastapi/docs_src/security/tutorial006.py:
+  ·    9  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial006_an.py:
+  ·   10  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial006_an_py39.py:
+  ·   11  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial007.py:
+  ·   31  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial007_an.py:
+  ·   34  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/security/tutorial007_an_py39.py:
+  ·   34  ALL    Flask/FastAPI /users/me
+
+fastapi/docs_src/separate_openapi_schemas/tutorial001.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/separate_openapi_schemas/tutorial001_py310.py:
+  ·   13  ALL    Flask/FastAPI /items/
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/separate_openapi_schemas/tutorial001_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/separate_openapi_schemas/tutorial002.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/separate_openapi_schemas/tutorial002_py310.py:
+  ·   13  ALL    Flask/FastAPI /items/
+  ·   18  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/separate_openapi_schemas/tutorial002_py39.py:
+  ·   15  ALL    Flask/FastAPI /items/
+  ·   20  ALL    Flask/FastAPI /items/
+
+fastapi/docs_src/settings/app01/main.py:
+  ·    8  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app02/main.py:
+  ·   15  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app02_an/main.py:
+  ·   16  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app02_an_py39/main.py:
+  ·   16  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app03/main.py:
+  ·   15  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app03_an/main.py:
+  ·   16  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/app03_an_py39/main.py:
+  ·   16  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/tutorial001.py:
+  ·   15  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/settings/tutorial001_pv1.py:
+  ·   15  ALL    Flask/FastAPI /info
+
+fastapi/docs_src/sql_databases/tutorial001.py:
+  ·   38  ALL    Flask/FastAPI /heroes/
+  ·   46  ALL    Flask/FastAPI /heroes/
+  ·   56  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   64  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial001_an.py:
+  ·   41  ALL    Flask/FastAPI /heroes/
+  ·   49  ALL    Flask/FastAPI /heroes/
+  ·   59  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   67  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial001_an_py310.py:
+  ·   40  ALL    Flask/FastAPI /heroes/
+  ·   48  ALL    Flask/FastAPI /heroes/
+  ·   58  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   66  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial001_an_py39.py:
+  ·   40  ALL    Flask/FastAPI /heroes/
+  ·   48  ALL    Flask/FastAPI /heroes/
+  ·   58  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   66  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial001_py310.py:
+  ·   36  ALL    Flask/FastAPI /heroes/
+  ·   44  ALL    Flask/FastAPI /heroes/
+  ·   54  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   62  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial001_py39.py:
+  ·   38  ALL    Flask/FastAPI /heroes/
+  ·   46  ALL    Flask/FastAPI /heroes/
+  ·   56  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   64  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002.py:
+  ·   55  ALL    Flask/FastAPI /heroes/
+  ·   64  ALL    Flask/FastAPI /heroes/
+  ·   74  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   82  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   97  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002_an.py:
+  ·   57  ALL    Flask/FastAPI /heroes/
+  ·   66  ALL    Flask/FastAPI /heroes/
+  ·   76  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   84  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   97  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002_an_py310.py:
+  ·   56  ALL    Flask/FastAPI /heroes/
+  ·   65  ALL    Flask/FastAPI /heroes/
+  ·   75  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   83  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   96  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002_an_py39.py:
+  ·   56  ALL    Flask/FastAPI /heroes/
+  ·   65  ALL    Flask/FastAPI /heroes/
+  ·   75  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   83  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   96  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002_py310.py:
+  ·   53  ALL    Flask/FastAPI /heroes/
+  ·   62  ALL    Flask/FastAPI /heroes/
+  ·   72  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   80  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   95  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sql_databases/tutorial002_py39.py:
+  ·   55  ALL    Flask/FastAPI /heroes/
+  ·   64  ALL    Flask/FastAPI /heroes/
+  ·   74  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   82  ALL    Flask/FastAPI /heroes/{hero_id}
+  ·   97  ALL    Flask/FastAPI /heroes/{hero_id}
+
+fastapi/docs_src/sub_applications/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /app
+
+fastapi/docs_src/templates/tutorial001.py:
+  ·   14  ALL    Flask/FastAPI /items/{id}
+
+fastapi/docs_src/using_request_directly/tutorial001.py:
+  ·    6  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/docs_src/websockets/tutorial001.py:
+  ·   41  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial002.py:
+  ·   61  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial002_an.py:
+  ·   62  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial002_an_py310.py:
+  ·   61  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial002_an_py39.py:
+  ·   61  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial002_py310.py:
+  ·   59  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial003.py:
+  ·   68  ALL    Flask/FastAPI /
+
+fastapi/docs_src/websockets/tutorial003_py39.py:
+  ·   66  ALL    Flask/FastAPI /
+
+fastapi/docs_src/wsgi/tutorial001.py:
+  ·   18  ALL    Flask/FastAPI /v2
+
+fastapi/fastapi/applications.py:
+  ·  235  ALL    Flask/FastAPI /users/
+  ·  236  ALL    Flask/FastAPI /items/
+  ·  388  ALL    Flask/FastAPI /items/
+  · 1802  ALL    Flask/FastAPI /items/
+  · 2180  ALL    Flask/FastAPI /items/{item_id}
+  · 2558  ALL    Flask/FastAPI /items/
+  · 2931  ALL    Flask/FastAPI /items/{item_id}
+  · 4055  ALL    Flask/FastAPI /items/
+  · 4428  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/fastapi/background.py:
+  ·   31  ALL    Flask/FastAPI /send-notification/{email}
+
+fastapi/fastapi/datastructures.py:
+  ·   53  ALL    Flask/FastAPI /files/
+  ·   58  ALL    Flask/FastAPI /uploadfile/
+
+fastapi/fastapi/exceptions.py:
+  ·   29  ALL    Flask/FastAPI /items/{item_id}
+
+fastapi/fastapi/param_functions.py:
+  ·  299  ALL    Flask/FastAPI /items/{item_id}
+  · 2272  ALL    Flask/FastAPI /items/
+  · 2353  ALL    Flask/FastAPI /users/me/items/
+
+fastapi/fastapi/routing.py:
+  ·  613  ALL    Flask/FastAPI /users/
+  · 1709  ALL    Flask/FastAPI /items/
+  · 2091  ALL    Flask/FastAPI /items/{item_id}
+  · 2473  ALL    Flask/FastAPI /items/
+  · 2850  ALL    Flask/FastAPI /items/{item_id}
+  · 3991  ALL    Flask/FastAPI /items/
+
+fastapi/fastapi/security/api_key.py:
+  ·   49  ALL    Flask/FastAPI /items/
+  ·  141  ALL    Flask/FastAPI /items/
+  ·  229  ALL    Flask/FastAPI /items/
+
+fastapi/fastapi/security/http.py:
+  ·  124  ALL    Flask/FastAPI /users/me
+  ·  244  ALL    Flask/FastAPI /users/me
+  ·  348  ALL    Flask/FastAPI /users/me
+
+fastapi/fastapi/security/oauth2.py:
+  ·   41  ALL    Flask/FastAPI /login
+  ·  183  ALL    Flask/FastAPI /login
+
+gin/context.go:
+  ·  173  GET    Gin        /user/:id
+  ·  173  ALL    Gorilla Mux /user/:id
+  ·  468  GET    Gin        /user/:id
+  ·  468  ALL    Gorilla Mux /user/:id
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/AccountResource.java:
+  ·   29  ALL    Spring MVC /api
+  ·   55  ALL    Spring MVC /register
+  ·   74  ALL    Spring MVC /activate
+  ·   89  ALL    Spring MVC /authenticate
+  ·  102  ALL    Spring MVC /account
+  ·  117  ALL    Spring MVC /account
+  ·  139  ALL    Spring MVC /account/change-password
+  ·  154  ALL    Spring MVC /account/reset-password/init
+  ·  170  ALL    Spring MVC /account/reset-password/finish
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/AuditResource.java:
+  ·   23  ALL    Spring MVC /management/audits
+  ·   73  ALL    Spring MVC /{id:.+}
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/BankAccountResource.java:
+  ·   26  ALL    Spring MVC /api
+  ·   46  ALL    Spring MVC /bank-accounts
+  ·   68  ALL    Spring MVC /bank-accounts
+  ·   86  ALL    Spring MVC /bank-accounts
+  ·   99  ALL    Spring MVC /bank-accounts/{id}
+  ·  113  ALL    Spring MVC /bank-accounts/{id}
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/LabelResource.java:
+  ·   26  ALL    Spring MVC /api
+  ·   46  ALL    Spring MVC /labels
+  ·   68  ALL    Spring MVC /labels
+  ·   86  ALL    Spring MVC /labels
+  ·   99  ALL    Spring MVC /labels/{id}
+  ·  113  ALL    Spring MVC /labels/{id}
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/LogsResource.java:
+  ·   19  ALL    Spring MVC /management
+  ·   22  ALL    Spring MVC /logs
+  ·   32  ALL    Spring MVC /logs
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/OperationResource.java:
+  ·   31  ALL    Spring MVC /api
+  ·   51  ALL    Spring MVC /operations
+  ·   73  ALL    Spring MVC /operations
+  ·   92  ALL    Spring MVC /operations
+  ·  107  ALL    Spring MVC /operations/{id}
+  ·  121  ALL    Spring MVC /operations/{id}
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/ProfileInfoResource.java:
+  ·   18  ALL    Spring MVC /api
+  ·   30  ALL    Spring MVC /profile-info
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/UserJWTController.java:
+  ·   25  ALL    Spring MVC /api
+  ·   37  ALL    Spring MVC /authenticate
+
+jhipster-sample-app-ng2/src/main/java/io/github/jhipster/sample/web/rest/UserResource.java:
+  ·   58  ALL    Spring MVC /api
+  ·   88  ALL    Spring MVC /users
+  ·  118  ALL    Spring MVC /users
+  ·  143  ALL    Spring MVC /users
+  ·  154  ALL    Spring MVC /users/authorities
+
+laravel/routes/web.php:
+  ·    5  ALL    Laravel    /
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/default-pages/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   29  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/default-pages/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/default/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/default/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/utc/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/cards.api.net-master/Payler/Payler/Responses/Templates/assets/utc/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:
+  ·  140  ALL    Axios      /api/v2/apm-payments
+  ·  164  ALL    Axios      /api/v3/crypto-payments
+  ·  196  ALL    Axios      /api/v2/templates/apm-payments
+  ·  227  ALL    Axios      /api/v2/templates/apm-payments
+  ·  266  ALL    Axios      /api/v2/faster-payments
+  ·  294  ALL    Axios      /api/v2/templates/faster-payments
+  ·  324  ALL    Axios      /api/v2/templates/faster-payments
+  ·  360  ALL    Axios      /api/v2/faster-payouts
+  ·  388  ALL    Axios      /api/v2/templates/faster-payouts
+  ·  418  ALL    Axios      /api/v2/templates/faster-payouts
+  ·  434  ALL    Axios      /api/v2/notification-settings
+  ·  447  ALL    Axios      /api/v2/notification-settings
+  ·  483  ALL    Axios      /api/v2/users/current
+  ·  517  ALL    Axios      /api/v2/users
+  ·  560  ALL    Axios      /api/v2/reports
+  ·  585  ALL    Axios      /api/v3/reports
+  ·  623  ALL    Axios      /api/v2/reports
+  ·  766  ALL    Axios      /api/v2/payments
+  ·  776  ALL    Axios      /api/v2/templates/payments
+  ·  820  ALL    Axios      /api/v2/templates/payments
+  ·  839  ALL    Axios      /api/v2/auth/login
+  ·  851  ALL    Axios      /api/v2/auth/password/recovery
+  ·  864  ALL    Axios      /api/v2/auth/refresh
+  ·  918  ALL    Axios      /api/v2/templates/payouts
+  ·  926  ALL    Axios      /api/v2/templates/payouts
+  ·  952  ALL    Axios      /api/v2/payouts
+  ·  966  ALL    Axios      /api/v2/payouts
+  ·  986  ALL    Axios      /api/v2/invoices
+  · 1010  ALL    Axios      /api/v2/invoices
+  · 1020  ALL    Axios      /api/v2/templates/invoices
+  · 1036  ALL    Axios      /api/v2/templates/invoices
+  · 1047  ALL    Axios      /api/v2/contracts
+  · 1082  ALL    Axios      /api/v2/analytics/payments
+  · 1092  ALL    Axios      /api/v2/currencies
+
+payler/GAPE/GATE/internal.api.ruby-master/spec/requests/api/v1/login_spec.rb:
+  ·   18  ALL    Rails      /api/v1/users/login
+  ·   18  ALL    Sinatra    /api/v1/users/login
+  ·   26  ALL    Rails      /api/v1/users/login
+  ·   26  ALL    Sinatra    /api/v1/users/login
+  ·   34  ALL    Rails      /api/v1/users/login
+  ·   34  ALL    Sinatra    /api/v1/users/login
+  ·   40  ALL    Rails      /api/v1/users/login
+  ·   40  ALL    Sinatra    /api/v1/users/login
+  ·   48  ALL    Rails      /api/v1/users/login
+  ·   48  ALL    Sinatra    /api/v1/users/login
+
+payler/GAPE/GATE/template_and_statics/resources/assets/KgMr/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/KgMr/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/NaviTaxi/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/NaviTaxi/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/TjMr/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/TjMr/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-default/js/apple-pay.js:
+  ·   41  ALL    XMLHttpRequest None
+  ·   78  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-default/js/googlepay.js:
+  ·  209  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-default/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-default/js/min/googlepay.js:
+  ·  218  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-mobile/js/apple-pay.js:
+  ·   41  ALL    XMLHttpRequest None
+  ·   78  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-mobile/js/googlepay.js:
+  ·  209  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-mobile/js/min/apple-pay.js:
+  ·   51  ALL    XMLHttpRequest None
+  ·   88  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/action-press-mobile/js/min/googlepay.js:
+  ·  218  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/alfapartner-intermediate/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   55  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/alfapartner-intermediate/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/arendaservice/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/arendaservice/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/arnica/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/arnica/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/autoconnex/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/autoconnex/js/min/googlepay.js:
+  ·  209  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/aviaoperator/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/aviaoperator/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-mir/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-mir/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-mir/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-visa/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-visa/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/avs-tj-visa/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/bigbilet/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/bigbilet/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/bigbilet/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/cbk-vd/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/cbk-vd/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/centerbooking/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/centerbooking/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/default-pages/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   29  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/default-pages/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/default/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/default/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/default/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/dengovich/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/diesel-without-cvv/js/app.js:
+  · 4862  ALL    XMLHttpRequest None
+  · 7623  ALL    XMLHttpRequest None
+  · 7642  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/dissertatus/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/dissertatus/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/donbilet/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/donbilet/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/ecenter/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/ecenter/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/erkc/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/erkc/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/garantetour/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/garantetour/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/icover/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/icover/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kbhmb-intermediate/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   55  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kbhmb-intermediate/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kbhmb/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kbhmb/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/knopkadengi-without-username/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/knopkadengi-without-username/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/knopkadengi-without-username/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kristalnaya/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kristalnaya/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kruiz/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kruiz/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kvp24/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/kvp24/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/madrobots/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/madrobots/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/maersoft/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/maersoft/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/manymoney/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/manymoney/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/market-frunze/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/market-frunze/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/market-frunze/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mcruises/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mcruises/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mdcm/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mdcm/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mfc/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mfc/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mkk-rcfr/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mkk-rcfr/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/mkk-rcfr/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/nou-mcfr-default/js/apple-pay.js:
+  ·   41  ALL    XMLHttpRequest None
+  ·   78  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/nou-mcfr-default/js/googlepay.js:
+  ·  209  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/nou-mcfr-mobile/js/apple-pay.js:
+  ·   41  ALL    XMLHttpRequest None
+  ·   78  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/nou-mcfr-mobile/js/googlepay.js:
+  ·  209  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/nutriel5/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paynt/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paynt/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paynt/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paysafe/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paysafe/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/paysafe/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/platezhcentr/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/platezhcentr/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/platezhcentr/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/quickpay-intermediate/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   55  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/quickpay-intermediate/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/quickpay/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/quickpay/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/redkassa/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/redkassa/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/redkassa/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/regionbilet/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/regionbilet/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/serviceonline/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/sistemagorodapplePay/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/sistemagorodapplePay/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/smartpay/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/smartpay/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/sodis/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/sodis/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/solncetur/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/solncetur/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/stopdolg/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/talarii/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/talarii/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/testprod/js/min/googlepay.js:
+  ·  204  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/trustPayments/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/trustPayments/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/trustPayments/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/unionpay/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/unionpay/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/utc/js/min/apple-pay.js:
+  ·   39  ALL    XMLHttpRequest None
+  ·   76  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/utc/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/vedi-group/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/vedi-group/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/vtpayler/js/min/googlepay.js:
+  ·  200  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/webzaim-intermediate/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   55  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/webzaim-intermediate/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/webzaim-new-intermediate/js/script-files/DefaultThreeDSAuthenticationRedirect.js:
+  ·   55  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/webzaim-new-intermediate/js/script-files/DefaultThreeDSMethodRedirect.js:
+  ·   25  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/webzaim2/js/min/googlepay.js:
+  ·  207  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/without-cvv/js/min/apple-pay.js:
+  ·   53  ALL    XMLHttpRequest None
+  ·   90  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/without-cvv/js/min/googlepay.js:
+  ·  220  ALL    XMLHttpRequest None
+
+payler/GAPE/GATE/template_and_statics/resources/assets/without-cvv/js/min/mir-pay.js:
+  ·   58  ALL    XMLHttpRequest None
+  ·   84  ALL    XMLHttpRequest None
+  ·  146  ALL    XMLHttpRequest None
+
+rails/actionmailer/lib/action_mailer/railtie.rb:
+  ·   81  ALL    Rails      /rails/mailers
+  ·   81  ALL    Sinatra    /rails/mailers
+  ·   82  ALL    Rails      /rails/mailers/download/*path
+  ·   82  ALL    Sinatra    /rails/mailers/download/*path
+  ·   83  ALL    Rails      /rails/mailers/*path
+  ·   83  ALL    Sinatra    /rails/mailers/*path
+
+rails/actionpack/lib/action_controller/metal.rb:
+  ·   82  ALL    Rails      hello
+  ·   82  ALL    Sinatra    hello
+
+rails/actionpack/lib/action_controller/metal/http_authentication.rb:
+  ·   65  ALL    Rails      /notes/1.xml
+  ·   65  ALL    Sinatra    /notes/1.xml
+  ·  415  ALL    Rails      /notes/1.xml
+  ·  415  ALL    Sinatra    /notes/1.xml
+
+rails/actionpack/lib/action_controller/test_case.rb:
+  ·   48  ALL    Rails      PATH_INFO
+  ·   48  ALL    Sinatra    PATH_INFO
+  ·  676  ALL    Rails      CONTENT_LENGTH
+  ·  676  ALL    Sinatra    CONTENT_LENGTH
+  ·  677  ALL    Rails      RAW_POST_DATA
+  ·  677  ALL    Sinatra    RAW_POST_DATA
+
+rails/actionpack/lib/action_dispatch/http/request.rb:
+  ·  260  ALL    Rails      /foo
+  ·  260  ALL    Sinatra    /foo
+  ·  263  ALL    Rails      /foo?bar
+  ·  263  ALL    Sinatra    /foo?bar
+  ·  271  ALL    Rails      /articles
+  ·  271  ALL    Sinatra    /articles
+  ·  274  ALL    Rails      /articles?page=2
+  ·  274  ALL    Sinatra    /articles?page=2
+  ·  282  ALL    Rails      /articles?page=2
+  ·  282  ALL    Sinatra    /articles?page=2
+  ·  290  ALL    Rails      /articles
+  ·  290  ALL    Sinatra    /articles
+
+rails/actionpack/lib/action_dispatch/http/response.rb:
+  ·  576  ALL    Rails      Content-Length
+  ·  576  ALL    Sinatra    Content-Length
+
+rails/actionpack/lib/action_dispatch/journey/route.rb:
+  ·  111  ALL    Rails      photo/:id
+  ·  111  ALL    Sinatra    photo/:id
+
+rails/actionpack/lib/action_dispatch/routing.rb:
+  ·   75  ALL    Rails      post/:id
+  ·   75  ALL    Sinatra    post/:id
+  ·   76  ALL    Rails      post/:id
+  ·   76  ALL    Sinatra    post/:id
+  ·   84  ALL    Rails      post/:id
+  ·   95  ALL    Rails      /login
+  ·   95  ALL    Sinatra    /login
+  ·  121  ALL    Rails      blog/show
+  ·  121  ALL    Sinatra    blog/show
+  ·  122  ALL    Rails      blog/delete
+  ·  122  ALL    Sinatra    blog/delete
+  ·  123  ALL    Rails      blog/edit
+  ·  123  ALL    Sinatra    blog/edit
+  ·  133  ALL    Rails      /articles/:year/:month/:day
+  ·  133  ALL    Sinatra    /articles/:year/:month/:day
+  ·  148  ALL    Rails      geocode/:postalcode
+  ·  148  ALL    Sinatra    geocode/:postalcode
+  ·  157  ALL    Rails      geocode/:postalcode
+  ·  157  ALL    Sinatra    geocode/:postalcode
+  ·  163  ALL    Rails      geocode/:postalcode
+  ·  163  ALL    Sinatra    geocode/:postalcode
+  ·  180  ALL    Rails      /stories
+  ·  180  ALL    Sinatra    /stories
+  ·  186  ALL    Rails      こんにちは
+  ·  186  ALL    Sinatra    こんにちは
+  ·  194  ALL    Rails      /application.js
+  ·  194  ALL    Sinatra    /application.js
+  ·  233  ALL    Rails      /jail
+  ·  233  ALL    Sinatra    /jail
+
+rails/actionpack/lib/action_dispatch/routing/mapper.rb:
+  ·  420  ALL    Rails      :controller/:action/:id
+  ·  429  ALL    Rails      :controller/:action/:id
+  ·  433  ALL    Rails      :controller/:action/:id
+  ·  433  ALL    Sinatra    :controller/:action/:id
+  ·  439  ALL    Rails      songs/*category/:title
+  ·  439  ALL    Sinatra    songs/*category/:title
+  ·  451  ALL    Rails      photos/:id
+  ·  452  ALL    Rails      photos/:id
+  ·  457  ALL    Rails      photos/:id
+  ·  458  ALL    Rails      photos/:id
+  ·  460  ALL    Rails      photos/:id
+  ·  511  ALL    Rails      path
+  ·  522  ALL    Rails      path
+  ·  523  ALL    Rails      path
+  ·  524  ALL    Rails      path
+  ·  530  ALL    Rails      path
+  ·  531  ALL    Rails      path
+  ·  532  ALL    Rails      path
+  ·  540  ALL    Rails      foo
+  ·  547  ALL    Rails      foo
+  ·  557  ALL    Rails      path/:id
+  ·  559  ALL    Rails      json_only
+  ·  564  ALL    Rails      path
+  ·  572  ALL    Rails      path
+  ·  581  ALL    Rails      path
+  ·  737  ALL    Rails      bacon
+  ·  737  ALL    Sinatra    bacon
+  ·  761  ALL    Rails      bacon
+  ·  761  ALL    Sinatra    bacon
+  ·  785  ALL    Rails      bacon
+  ·  785  ALL    Sinatra    bacon
+  ·  809  ALL    Rails      bacon
+  ·  809  ALL    Sinatra    bacon
+  ·  833  ALL    Rails      broccoli
+  ·  833  ALL    Sinatra    broccoli
+  · 1050  ALL    Rails      bacon
+  · 1183  ALL    Rails      scoped_pages/(:id)
+  · 1700  ALL    Rails      search
+  · 1700  ALL    Sinatra    search
+  · 1721  ALL    Rails      preview
+  · 1721  ALL    Sinatra    preview
+  · 1835  ALL    Rails      path
+  · 1836  ALL    Rails      path
+
+rails/actionpack/lib/action_dispatch/routing/redirection.rb:
+  ·  151  ALL    Rails      /stories
+  ·  151  ALL    Sinatra    /stories
+  ·  160  ALL    Rails      /stories
+  ·  160  ALL    Sinatra    /stories
+  ·  164  ALL    Rails      docs/:article
+  ·  164  ALL    Sinatra    docs/:article
+  ·  178  ALL    Rails      jokes/:number
+  ·  178  ALL    Sinatra    jokes/:number
+  ·  190  ALL    Rails      stores/:name
+  ·  190  ALL    Sinatra    stores/:name
+  ·  191  ALL    Rails      stores/:name(*all)
+  ·  191  ALL    Sinatra    stores/:name(*all)
+  ·  192  ALL    Rails      /stories
+  ·  192  ALL    Sinatra    /stories
+  ·  202  ALL    Rails      accounts/:name
+  ·  202  ALL    Sinatra    accounts/:name
+
+rails/actionview/lib/action_view/helpers/tags/checkable.rb:
+  ·    9  ALL    Rails      checked
+  ·    9  ALL    Sinatra    checked
+
+rails/actionview/lib/action_view/lookup_context.rb:
+  ·  266  ALL    Rails      */*
+  ·  266  ALL    Sinatra    */*
+
+rails/activesupport/lib/active_support/core_ext/string/inflections.rb:
+  ·  290  ALL    Rails      _
+  ·  290  ALL    Sinatra    _
+
+rails/activesupport/lib/active_support/inflector/methods.rb:
+  ·  262  ALL    Rails      _
+  ·  262  ALL    Sinatra    _
+
+rails/guides/bug_report_templates/action_controller.rb:
+  ·   29  ALL    Rails      /
+  ·   29  ALL    Sinatra    /
+  ·   44  ALL    Rails      /
+  ·   44  ALL    Sinatra    /
+
+rails/railties/lib/rails/application/finisher.rb:
+  ·  143  ALL    Rails      /rails/info/properties
+  ·  143  ALL    Sinatra    /rails/info/properties
+  ·  144  ALL    Rails      /rails/info/routes
+  ·  144  ALL    Sinatra    /rails/info/routes
+  ·  145  ALL    Rails      /rails/info/notes
+  ·  145  ALL    Sinatra    /rails/info/notes
+  ·  146  ALL    Rails      /rails/info
+  ·  146  ALL    Sinatra    /rails/info
+  ·  151  ALL    Rails      /
+  ·  151  ALL    Sinatra    /
+
+rails/railties/lib/rails/engine.rb:
+  ·  150  ALL    Rails      /
+  ·  150  ALL    Sinatra    /
+  ·  160  ALL    Rails      /blog/omg
+  ·  160  ALL    Sinatra    /blog/omg
+  ·  169  ALL    Rails      /blog/omg
+  ·  169  ALL    Sinatra    /blog/omg
+  ·  266  ALL    Rails      /foo
+  ·  266  ALL    Sinatra    /foo
+
+rails/railties/lib/rails/generators/rails/controller/controller_generator.rb:
+  ·   20  ALL    Rails      #{file_name}/#{action}
+  ·   20  ALL    Sinatra    #{file_name}/#{action}
+
+rails/railties/lib/rails/health_controller.rb:
+  ·   21  ALL    Rails      healthz
+  ·   21  ALL    Sinatra    healthz
+
+script/venv/lib/python3.13/site-packages/pip/_vendor/rich/_export_format.py:
+  ·   28  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2
+  ·   29  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff
+  ·   36  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2
+  ·   37  ALL    Django url https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff
+
+spring-petclinic-angularjs/spring-petclinic-server/src/main/java/org/springframework/samples/petclinic/web/OwnerResource.java:
+  ·   65  ALL    Spring MVC /owners
+  ·   74  ALL    Spring MVC /owners/{ownerId}
+  ·   82  ALL    Spring MVC /owners/list
+  ·   90  ALL    Spring MVC /owners/{ownerId}
+
+spring-petclinic-angularjs/spring-petclinic-server/src/main/java/org/springframework/samples/petclinic/web/PetResource.java:
+  ·   48  ALL    Spring MVC /petTypes
+  ·   53  ALL    Spring MVC /owners/{ownerId}/pets
+  ·   66  ALL    Spring MVC /owners/{ownerId}/pets/{petId}
+  ·   86  ALL    Spring MVC /owners/*/pets/{petId}
+
+spring-petclinic-angularjs/spring-petclinic-server/src/main/java/org/springframework/samples/petclinic/web/VetResource.java:
+  ·   42  ALL    Spring MVC /vets
+
+spring-petclinic-angularjs/spring-petclinic-server/src/main/java/org/springframework/samples/petclinic/web/VisitResource.java:
+  ·   47  ALL    Spring MVC /owners/{ownerId}/pets/{petId}/visits
+  ·   57  ALL    Spring MVC /owners/{ownerId}/pets/{petId}/visits
+
+strapi/packages/cli/create-strapi-app/src/utils/usage.ts:
+  ·   61  ALL    Fetch API  https://analytics.strapi.io/api/v2/track
+
+strapi/packages/core/admin/admin/src/components/NpsSurvey.tsx:
+  ·  194  ALL    Fetch API  https://analytics.strapi.io/submit-nps
+
+strapi/packages/core/admin/admin/src/features/Tracking.tsx:
+  ·   55  ALL    Fetch API  https://analytics.strapi.io/api/v2/track
+
+strapi/packages/core/admin/admin/src/layouts/AuthenticatedLayout.tsx:
+  ·   46  ALL    Fetch API  https://api.github.com/repos/strapi/strapi/releases/latest
+
+strapi/packages/core/admin/admin/src/pages/UseCasePage.tsx:
+  ·   85  ALL    Fetch API  https://analytics.strapi.io/register
+
+strapi/packages/core/core/src/services/server/index.ts:
+  ·   38  ALL    Express    /_health
+
+strapi/packages/core/strapi/src/cli/commands/content-types/list.ts:
+  ·   14  GET    Express    content-types
+
+strapi/packages/core/strapi/src/cli/commands/controllers/list.ts:
+  ·   14  GET    Express    controllers
+
+strapi/packages/core/strapi/src/cli/commands/hooks/list.ts:
+  ·   13  GET    Express    hooks
+
+strapi/packages/core/strapi/src/cli/commands/middlewares/list.ts:
+  ·   13  GET    Express    middlewares
+
+strapi/packages/core/strapi/src/cli/commands/policies/list.ts:
+  ·   13  GET    Express    policies
+
+strapi/packages/core/strapi/src/cli/commands/services/list.ts:
+  ·   13  GET    Express    services
+
+strapi/packages/core/strapi/src/cli/utils/telemetry.ts:
+  ·    5  ALL    Fetch API  https://analytics.strapi.io/api/v2/track
+
+wagtail/wagtail/admin/api/urls.py:
+  ·   15  ALL    Django path main/
+
+wagtail/wagtail/admin/api/views.py:
+  ·  154  ALL    Django path <int:pk>/action/<str:action_name>/
+
+wagtail/wagtail/admin/urls/__init__.py:
+  ·   28  ALL    Django path test404/
+  ·   29  ALL    Django path api/
+  ·   30  ALL    Django path failwhale/
+  ·   32  ALL    Django path pages/
+  ·   37  ALL    Django path pages/<int:parent_page_id>/
+  ·   42  ALL    Django path pages/<int:parent_page_id>/results/
+  ·   48  ALL    Django path bulk/<str:app_label>/<str:model_name>/<str:action>/
+  ·   53  ALL    Django path pages/
+  ·   55  ALL    Django path choose-page/
+  ·   56  ALL    Django path choose-page/<int:parent_page_id>/
+  ·   61  ALL    Django path choose-page/search/
+  ·   66  ALL    Django path choose-page/chosen-multiple/
+  ·   71  ALL    Django path choose-external-link/
+  ·   76  ALL    Django path choose-email-link/
+  ·   81  ALL    Django path choose-phone-link/
+  ·   86  ALL    Django path choose-anchor-link/
+  ·   91  ALL    Django path tag-autocomplete/
+  ·   92  ALL    Django path tag-autocomplete/<slug:app_name>/<slug:model_name>/
+  ·   97  ALL    Django path collections/
+  ·  101  ALL    Django path workflows/
+  ·  105  ALL    Django path reports/
+  ·  108  ALL    Django path account/
+  ·  109  ALL    Django path logout/
+  ·  110  ALL    Django path dismissibles/
+  ·  115  ALL    Django path editing-sessions/
+  ·  122  ALL    Django path block-preview/
+  ·  143  ALL    Django path sprite/
+  ·  144  ALL    Django path login/
+  ·  146  ALL    Django path password_reset/
+  ·  148  ALL    Django path jsi18n/
+
+wagtail/wagtail/admin/urls/collections.py:
+  ·    8  ALL    Django path add/
+  ·    9  ALL    Django path <int:pk>/
+  ·   10  ALL    Django path <int:pk>/delete/
+  ·   11  ALL    Django path <int:collection_id>/privacy/
+
+wagtail/wagtail/admin/urls/editing_sessions.py:
+  ·    7  ALL    Django path ping/<str:app_label>/<str:model_name>/<str:object_id>/<int:session_id>/
+  ·   12  ALL    Django path release/<int:session_id>/
+
+wagtail/wagtail/admin/urls/pages.py:
+  ·   24  ALL    Django path add/<slug:content_type_app_name>/<slug:content_type_model_name>/<int:parent_page_id>/
+  ·   29  ALL    Django path add/<slug:content_type_app_name>/<slug:content_type_model_name>/<int:parent_page_id>/preview/
+  ·   34  ALL    Django path usage/<slug:content_type_app_name>/<slug:content_type_model_name>/
+  ·   39  ALL    Django path usage/<slug:content_type_app_name>/<slug:content_type_model_name>/results/
+  ·   44  ALL    Django path <int:page_id>/usage/
+  ·   45  ALL    Django path <int:page_id>/edit/
+  ·   46  ALL    Django path <int:page_id>/edit/preview/
+  ·   51  ALL    Django path <int:page_id>/view_draft/
+  ·   52  ALL    Django path <int:parent_page_id>/add_subpage/
+  ·   53  ALL    Django path <int:page_id>/delete/
+  ·   54  ALL    Django path <int:page_id>/unpublish/
+  ·   55  ALL    Django path <int:page_id>/convert_alias/
+  ·   60  ALL    Django path search/
+  ·   61  ALL    Django path search/results/
+  ·   66  ALL    Django path <int:page_to_move_id>/move/
+  ·   69  ALL    Django path <int:page_to_move_id>/move/<int:destination_id>/confirm/
+  ·   74  ALL    Django path <int:page_to_move_id>/set_position/
+  ·   79  ALL    Django path <int:page_id>/copy/
+  ·   80  ALL    Django path workflow/action/<int:page_id>/<slug:action_name>/<int:task_state_id>/
+  ·   85  ALL    Django path workflow/collect_action_data/<int:page_id>/<slug:action_name>/<int:task_state_id>/
+  ·   90  ALL    Django path workflow/confirm_cancellation/<int:page_id>/
+  ·   95  ALL    Django path workflow/preview/<int:page_id>/<int:task_id>/
+  ·  100  ALL    Django path <int:page_id>/privacy/
+  ·  101  ALL    Django path <int:page_id>/lock/
+  ·  102  ALL    Django path <int:page_id>/unlock/
+  ·  103  ALL    Django path <int:page_id>/revisions/
+  ·  104  ALL    Django path <int:page_id>/revisions/<int:revision_id>/view/
+  ·  109  ALL    Django path <int:page_id>/revisions/<int:revision_id>/revert/
+  ·  114  ALL    Django path <int:page_id>/revisions/<int:revision_id>/unschedule/
+  ·  124  ALL    Django path <int:page_id>/workflow_history/
+  ·  129  ALL    Django path <int:page_id>/workflow_history/detail/<int:workflow_state_id>/
+  ·  134  ALL    Django path <int:page_id>/history/
+  ·  135  ALL    Django path <int:page_id>/history/results/
+
+wagtail/wagtail/admin/urls/password_reset.py:
+  ·    7  ALL    Django path done/
+  ·   12  ALL    Django path confirm/<uidb64>/<token>/
+  ·   17  ALL    Django path complete/
+
+wagtail/wagtail/admin/urls/reports.py:
+  ·   13  ALL    Django path locked/
+  ·   14  ALL    Django path locked/results/
+  ·   19  ALL    Django path workflow/
+  ·   20  ALL    Django path workflow/results/
+  ·   25  ALL    Django path workflow_tasks/
+  ·   26  ALL    Django path workflow_tasks/results/
+  ·   31  ALL    Django path site-history/
+  ·   32  ALL    Django path site-history/results/
+  ·   37  ALL    Django path aging-pages/
+  ·   38  ALL    Django path aging-pages/results/
+  ·   43  ALL    Django path page-types-usage/
+  ·   48  ALL    Django path page-types-usage/results/
+
+wagtail/wagtail/admin/urls/workflows.py:
+  ·    7  ALL    Django path list/
+  ·    8  ALL    Django path list/results/
+  ·   13  ALL    Django path add/
+  ·   14  ALL    Django path enable/<int:pk>/
+  ·   15  ALL    Django path disable/<int:pk>/
+  ·   16  ALL    Django path edit/<int:pk>/
+  ·   17  ALL    Django path usage/<int:pk>/
+  ·   18  ALL    Django path usage/<int:pk>/results/
+  ·   23  ALL    Django path remove/<int:page_pk>/
+  ·   24  ALL    Django path remove/<int:page_pk>/<int:workflow_pk>/
+  ·   29  ALL    Django path tasks/add/<str:app_label>/<str:model_name>/
+  ·   34  ALL    Django path tasks/select_type/
+  ·   35  ALL    Django path tasks/index/
+  ·   36  ALL    Django path tasks/index/results/
+  ·   41  ALL    Django path tasks/edit/<int:pk>/
+  ·   42  ALL    Django path tasks/disable/<int:pk>/
+  ·   45  ALL    Django path tasks/enable/<int:pk>/
+  ·   46  ALL    Django path task_chooser/
+  ·   47  ALL    Django path task_chooser/results/
+  ·   52  ALL    Django path task_chooser/create/
+  ·   57  ALL    Django path task_chooser/<int:task_id>/
+
+wagtail/wagtail/admin/viewsets/chooser.py:
+  ·  213  ALL    Django path results/
+  ·  214  ALL    Django path chosen/<str:pk>/
+  ·  215  ALL    Django path chosen-multiple/
+  ·  216  ALL    Django path create/
+
+wagtail/wagtail/admin/viewsets/model.py:
+  ·  611  ALL    Django path results/
+  ·  612  ALL    Django path new/
+  ·  613  ALL    Django path edit/<str:pk>/
+  ·  614  ALL    Django path delete/<str:pk>/
+  ·  615  ALL    Django path history/<str:pk>/
+  ·  616  ALL    Django path history-results/<str:pk>/
+  ·  621  ALL    Django path usage/<str:pk>/
+  ·  626  ALL    Django path inspect/<str:pk>/
+  ·  630  ALL    Django path copy/<str:pk>/
+
+wagtail/wagtail/admin/viewsets/pages.py:
+  ·   74  ALL    Django path results/
+  ·   75  ALL    Django path choose_parent/
+
+wagtail/wagtail/api/v2/router.py:
+  ·   93  ALL    Django path api/
+
+wagtail/wagtail/api/v2/views.py:
+  ·  392  ALL    Django path <int:pk>/
+  ·  393  ALL    Django path find/
+
+wagtail/wagtail/contrib/forms/urls.py:
+  ·   12  ALL    Django path results/
+  ·   15  ALL    Django path submissions/<int:page_id>/
+  ·   18  ALL    Django path submissions/<int:page_id>/results/
+  ·   24  ALL    Django path submissions/<int:page_id>/delete/
+
+wagtail/wagtail/contrib/forms/wagtail_hooks.py:
+  ·   13  ALL    Django path forms/
+
+wagtail/wagtail/contrib/redirects/urls.py:
+  ·    8  ALL    Django path results/
+  ·    9  ALL    Django path add/
+  ·   10  ALL    Django path <int:redirect_id>/
+  ·   11  ALL    Django path <int:redirect_id>/delete/
+  ·   12  ALL    Django path import/
+  ·   13  ALL    Django path import/process/
+
+wagtail/wagtail/contrib/redirects/wagtail_hooks.py:
+  ·   20  ALL    Django path redirects/
+
+wagtail/wagtail/contrib/routable_page/models.py:
+  ·  199  ALL    Django path past/
+
+wagtail/wagtail/contrib/search_promotions/admin_urls.py:
+  ·    9  ALL    Django path results/
+  ·   10  ALL    Django path add/
+  ·   11  ALL    Django path <int:query_id>/
+  ·   12  ALL    Django path <int:query_id>/delete/
+  ·   13  ALL    Django path queries/chooser/
+  ·   14  ALL    Django path queries/chooser/results/
+  ·   19  ALL    Django path reports/search-terms/
+  ·   20  ALL    Django path reports/search-terms/results/
+
+wagtail/wagtail/contrib/search_promotions/wagtail_hooks.py:
+  ·   20  ALL    Django path searchpicks/
+
+wagtail/wagtail/contrib/settings/urls.py:
+  ·    7  ALL    Django path <slug:app_name>/<slug:model_name>/
+  ·   12  ALL    Django path <slug:app_name>/<slug:model_name>/<int:pk>/
+
+wagtail/wagtail/contrib/settings/wagtail_hooks.py:
+  ·   11  ALL    Django path settings/
+
+wagtail/wagtail/contrib/simple_translation/wagtail_hooks.py:
+  ·   18  ALL    Django path submit/page/<int:page_id>/
+  ·   23  ALL    Django path submit/snippet/<slug:app_label>/<slug:model_name>/<str:pk>/
+  ·   31  ALL    Django path translation/
+
+wagtail/wagtail/contrib/styleguide/wagtail_hooks.py:
+  ·   13  ALL    Django path styleguide/
+
+wagtail/wagtail/documents/admin_urls.py:
+  ·    8  ALL    Django path results/
+  ·   13  ALL    Django path add/
+  ·   14  ALL    Django path edit/<int:document_id>/
+  ·   15  ALL    Django path delete/<int:document_id>/
+  ·   16  ALL    Django path multiple/add/
+  ·   17  ALL    Django path multiple/<int:doc_id>/
+  ·   18  ALL    Django path multiple/create_from_uploaded_document/<int:uploaded_file_id>/
+  ·   23  ALL    Django path multiple/<int:doc_id>/delete/
+  ·   28  ALL    Django path multiple/delete_upload/<int:uploaded_file_id>/
+  ·   33  ALL    Django path usage/<int:document_id>/
+
+wagtail/wagtail/documents/urls.py:
+  ·    7  ALL    Django path authenticate_with_password/<int:restriction_id>/
+
+wagtail/wagtail/documents/wagtail_hooks.py:
+  ·   40  ALL    Django path documents/
+
+wagtail/wagtail/embeds/urls.py:
+  ·    7  ALL    Django path chooser/
+  ·    8  ALL    Django path chooser/upload/
+
+wagtail/wagtail/embeds/wagtail_hooks.py:
+  ·   15  ALL    Django path embeds/
+
+wagtail/wagtail/images/admin_urls.py:
+  ·    8  ALL    Django path results/
+  ·    9  ALL    Django path <int:image_id>/
+  ·   10  ALL    Django path <int:image_id>/delete/
+  ·   11  ALL    Django path <int:image_id>/generate_url/
+  ·   16  ALL    Django path <int:image_id>/generate_url/<str:filter_spec>/
+  ·   21  ALL    Django path <int:image_id>/preview/<str:filter_spec>/
+  ·   22  ALL    Django path add/
+  ·   23  ALL    Django path usage/<int:image_id>/
+  ·   24  ALL    Django path multiple/add/
+  ·   25  ALL    Django path multiple/<int:image_id>/
+  ·   26  ALL    Django path multiple/create_from_uploaded_image/<int:uploaded_file_id>/
+  ·   31  ALL    Django path multiple/<int:image_id>/delete/
+  ·   36  ALL    Django path multiple/delete_upload/<int:uploaded_file_id>/
+
+wagtail/wagtail/images/models.py:
+  · 1352  ALL    Django url {{ image.url }}
+
+wagtail/wagtail/images/views/chooser.py:
+  ·  333  ALL    Django path <int:image_id>/select_format/
+
+wagtail/wagtail/images/wagtail_hooks.py:
+  ·   33  ALL    Django path images/
+
+wagtail/wagtail/project_template/project_name/urls.py:
+  ·   12  ALL    Django path django-admin/
+  ·   13  ALL    Django path admin/
+  ·   14  ALL    Django path documents/
+  ·   15  ALL    Django path search/
+  ·   34  ALL    Django path pages/
+
+wagtail/wagtail/snippets/views/snippets.py:
+  · 1030  ALL    Django path results/
+  · 1031  ALL    Django path add/
+  · 1032  ALL    Django path edit/<str:pk>/
+  · 1033  ALL    Django path delete/<str:pk>/
+  · 1034  ALL    Django path usage/<str:pk>/
+  · 1035  ALL    Django path history/<str:pk>/
+  · 1036  ALL    Django path history-results/<str:pk>/
+  · 1044  ALL    Django path copy/<str:pk>/
+  · 1048  ALL    Django path inspect/<str:pk>/
+  · 1053  ALL    Django path preview/
+  · 1054  ALL    Django path preview/<str:pk>/
+  · 1064  ALL    Django path history/<str:pk>/revisions/<int:revision_id>/view/
+  · 1072  ALL    Django path history/<str:pk>/revisions/<int:revision_id>/revert/
+  · 1086  ALL    Django path history/<str:pk>/revisions/<int:revision_id>/unschedule/
+  · 1091  ALL    Django path unpublish/<str:pk>/
+  · 1096  ALL    Django path lock/<str:pk>/
+  · 1097  ALL    Django path unlock/<str:pk>/
+  · 1102  ALL    Django path workflow/action/<str:pk>/<slug:action_name>/<int:task_state_id>/
+  · 1107  ALL    Django path workflow/collect_action_data/<str:pk>/<slug:action_name>/<int:task_state_id>/
+  · 1112  ALL    Django path workflow/confirm_cancellation/<str:pk>/
+  · 1117  ALL    Django path workflow_history/<str:pk>/
+  · 1122  ALL    Django path workflow_history/<str:pk>/detail/<int:workflow_state_id>/
+  · 1131  ALL    Django path workflow/preview/<str:pk>/<int:task_id>/
+
+wagtail/wagtail/snippets/wagtail_hooks.py:
+  ·   22  ALL    Django path snippets/
+
+wagtail/wagtail/urls.py:
+  ·   26  ALL    Django path _util/authenticate_with_password/<int:page_view_restriction_id>/<int:page_id>/
+  ·   31  ALL    Django path _util/login/
+
+xpress/Controllers/AuthController.js:
+  ·   11  GET    Express    superSecret
+  ·   13  GET    Express    tokenExpiration
+  ·   17  GET    Express    superSecret
+  ·   42  GET    Express    superSecret
+  ·   52  GET    Express    noAuthRoutes
+  ·   65  GET    Express    env
+  ·   68  GET    Express    superSecret
+  ·   73  GET    Express    tokenExpiration
+
+xpress/app.js:
+  ·   38  GET    Express    env
+
+xpress/routes/V1.js:
+  ·   29  ALL    Express    /
+  ·   33  ALL    Express    /list
+  ·   37  GET    Express    /auth
+  ·   38  GET    Express    /auth/decode
+  ·   39  GET    Express    /user/products
+  ·   40  GET    Express    /user/profile
+
+xpress/routes/index.js:
+  ·    5  GET    Express    /
+=== AJAX-ЗАПРОСЫ ===
+  Ghost/apps/admin-x-activitypub/src/hooks/use-activity-pub-queries.ts:33 -> /ghost/api/admin/site
+  Ghost/ghost/admin/app/services/whats-new.js:75 -> https://ghost.org/changelog.json
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:140 -> /api/v2/apm-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:164 -> /api/v3/crypto-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:196 -> /api/v2/templates/apm-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:227 -> /api/v2/templates/apm-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:266 -> /api/v2/faster-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:294 -> /api/v2/templates/faster-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:324 -> /api/v2/templates/faster-payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:360 -> /api/v2/faster-payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:388 -> /api/v2/templates/faster-payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:418 -> /api/v2/templates/faster-payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:434 -> /api/v2/notification-settings
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:447 -> /api/v2/notification-settings
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:483 -> /api/v2/users/current
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:517 -> /api/v2/users
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:560 -> /api/v2/reports
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:585 -> /api/v3/reports
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:623 -> /api/v2/reports
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:766 -> /api/v2/payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:776 -> /api/v2/templates/payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:820 -> /api/v2/templates/payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:839 -> /api/v2/auth/login
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:851 -> /api/v2/auth/password/recovery
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:864 -> /api/v2/auth/refresh
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:918 -> /api/v2/templates/payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:926 -> /api/v2/templates/payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:952 -> /api/v2/payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:966 -> /api/v2/payouts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:986 -> /api/v2/invoices
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1010 -> /api/v2/invoices
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1020 -> /api/v2/templates/invoices
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1036 -> /api/v2/templates/invoices
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1047 -> /api/v2/contracts
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1082 -> /api/v2/analytics/payments
+  payler/GAPE/GATE/gate.frontend.mc.react/libs/merchant-cabinet/api/src/lib/ApiMerchantCabinet.ts:1092 -> /api/v2/currencies
+  rails/actioncable/lib/action_cable/server/configuration.rb:41 -> adapter
+  rails/actiontext/app/helpers/action_text/tag_helper.rb:60 -> value
+  rails/actionview/lib/action_view/helpers/tags/base.rb:98 -> name
+  rails/actionview/lib/action_view/helpers/tags/base.rb:101 -> id
+  rails/actionview/lib/action_view/helpers/tags/text_field.rb:15 -> value
+  rails/activejob/lib/active_job/queue_adapters/test_adapter.rb:42 -> arguments
+  rails/activejob/lib/active_job/queue_adapters/test_adapter.rb:43 -> queue_name
+  rails/activejob/lib/active_job/queue_adapters/test_adapter.rb:44 -> priority
+  rails/activerecord/lib/active_record/connection_adapters/mysql/schema_statements.rb:205 -> Field
+  rails/activestorage/lib/active_storage/engine.rb:229 -> FIXTURES_PATH
+  rails/activesupport/lib/active_support/cache.rb:347 -> today
+  rails/activesupport/lib/active_support/cache.rb:349 -> city
+  rails/activesupport/lib/active_support/cache.rb:350 -> city
+  rails/activesupport/lib/active_support/cache.rb:353 -> city
+  rails/activesupport/lib/active_support/cache.rb:375 -> foo
+  rails/activesupport/lib/active_support/cache.rb:431 -> foo
+  rails/activesupport/lib/active_support/cache.rb:438 -> foo
+  rails/activesupport/lib/active_support/cache.rb:446 -> authentication-token:#{user.id}
+  rails/activesupport/lib/active_support/cache/redis_cache_store.rb:151 -> foo
+  rails/activesupport/lib/active_support/hash_with_indifferent_access.rb:207 -> foo
+  rails/railties/lib/rails/generators/app_base.rb:534 -> NODE_VERSION
+  rails/tools/preview_docs.rb:58 -> BUILDKITE_REPO
+  rails/tools/preview_docs.rb:82 -> BUILDKITE_PULL_REQUEST
+  strapi/packages/core/admin/admin/src/layouts/AuthenticatedLayout.tsx:46 -> https://api.github.com/repos/strapi/strapi/releases/latest
+
+=== HTTP МЕТОДЫ ===
+Не найдено HTTP методов
+
+=== HTTP ЗАГОЛОВКИ ===
+gin/context_test.go                      ·  879  None
+gin/context_test.go                      · 1713  None
+gin/context_test.go                      · 1771  None
+gin/context_test.go                      · 1778  None
+gin/context_test.go                      · 1792  None
+gin/context_test.go                      · 1832  None
+gin/context_test.go                      · 1833  None
+gin/context_test.go                      · 1834  None
+gin/context_test.go                      · 1835  None
+gin/context_test.go                      · 1836  None
+gin/context_test.go                      · 1846  None
+gin/context_test.go                      · 2625  None
+gin/context_test.go                      · 2626  None
+gin/context_test.go                      · 2627  None
+gin/context_test.go                      · 2628  None
+gin/context_test.go                      · 2629  None
+gin/context_test.go                      · 2630  None
+gin/context_test.go                      · 2631  None
+gin/context_test.go                      · 2638  None
+gin/context_test.go                      · 2646  None
+gin/logger_test.go                       ·  209  None
