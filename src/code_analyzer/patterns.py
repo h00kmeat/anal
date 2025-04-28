@@ -126,40 +126,103 @@ ENDPOINT_PATTERNS = {
             r'xhr\.open\(\s*["\'](?:GET|POST|PUT|DELETE|PATCH)["\']\s*,\s*'
             r'["\']([^"\']+)["\']\))'
         ), "XMLHttpRequest"),
+        # AngularJS ($http)
+        (re.compile(
+            r"\b\$http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "AngularJS"),
+
+        # Modern Angular (HttpClient)
+        (re.compile(
+            r"\bthis\.http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "Angular HttpClient"),
     ],
     "TypeScript": [
-        # Express базовые вызовы
-        (re.compile(r"\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*['\"]([^'\"]+)['\"]"), "Express"),
-        # Express-цепочки router.route().get().post()…
-        (re.compile(r"router\.route\s*\(\s*['\"]([^'\"]+)['\"]\)\s*(?:\.\s*(?:get|post|put|delete|patch)\s*\()"), "Express"),
-        # NestJS декораторы
-        (re.compile(r"@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*['\"]([^'\"]*)['\"]\s*\)"), "NestJS"),
-        # jQuery AJAX
-        (re.compile(r"\b(?:\$\.ajax|jQuery\.ajax)\s*\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"]"), "jQuery AJAX"),
-        (re.compile(r"\b\$(?:\s*\.\s*)?(get|post|ajax)\s*\(\s*['\"]([^'\"]+)['\"]"), "jQuery AJAX"),
-        # Axios
-        (re.compile(r"\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"), "Axios"),
-        # Fetch API
-        (re.compile(r"\b(?:await\s+)?fetch\s*\(\s*['\"]([^'\"]+)['\"]"), "Fetch API"),
-        # XMLHttpRequest
-        (re.compile(r"\b(?:new\s+XMLHttpRequest\s*\(|xhr\.open\s*\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"])"), "XMLHttpRequest"),
+        # Express: app.get("/…") / router.post("/…")
+        (re.compile(
+            r'\b(?:app|router)\.(get|post|put|delete|patch|all)'
+            r'\s*\(\s*["\']([^"\']+)["\']'
+        ), "Express"),
+
+        # Express-цепочки router.route("/…").get(…)…
+        (re.compile(
+            r'router\.route\s*\(\s*["\']([^"\']+)["\']\)\s*'
+            r'(?:\.\s*(?:get|post|put|delete|patch)\s*\()'
+        ), "Express"),
+
+        # NestJS декораторы @Controller / @Get() / @Post() …
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']*)["\']\s*\)'
+        ), "NestJS"),
+
+        # jQuery AJAX: $.ajax({url: "…"})
+        (re.compile(
+            r'\b(?:\$\.ajax|jQuery\.ajax)\s*\(\s*{[^}]*url\s*:\s*["\']([^"\']+)["\']'
+        ), "jQuery AJAX"),
+        (re.compile(
+            r'\b\$(?:\s*\.\s*)?(get|post|ajax)\s*\(\s*["\']([^"\']+)["\']'
+        ), "jQuery AJAX"),
+
+        # Axios, Fetch, XHR
+        (re.compile(r'\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']'), "Axios"),
+        (re.compile(r'\b(?:await\s+)?fetch\s*\(\s*["\']([^"\']+)["\']'), "Fetch API"),
+        (re.compile(
+            r'\b(?:new\s+XMLHttpRequest\s*\(|'
+            r'xhr\.open\(\s*["\'](?:GET|POST|PUT|DELETE|PATCH)["\']\s*,\s*'
+            r'["\']([^"\']+)["\']\))'
+        ), "XMLHttpRequest"),
+        # AngularJS ($http)
+        (re.compile(
+            r"\b\$http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "AngularJS"),
+        
+        # Modern Angular (HttpClient)
+        (re.compile(
+            r"\bthis\.http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "Angular HttpClient"),
     ],
     "JavaScript/TypeScript": [
-        # Express базовые вызовы
-        (re.compile(r"\b(?:app|router)\.(get|post|put|delete|patch|all)\s*\(\s*['\"]([^'\"]+)['\"]"), "Express"),
-        # Express-цепочки router.route().get().post()…
-        (re.compile(r"router\.route\s*\(\s*['\"]([^'\"]+)['\"]\)\s*(?:\.\s*(?:get|post|put|delete|patch)\s*\()"), "Express"),
-        # NestJS декораторы
-        (re.compile(r"@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*['\"]([^'\"]*)['\"]\s*\)"), "NestJS"),
-        # jQuery AJAX
-        (re.compile(r"\b(?:\$\.ajax|jQuery\.ajax)\s*\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"]"), "jQuery AJAX"),
-        (re.compile(r"\b\$(?:\s*\.\s*)?(get|post|ajax)\s*\(\s*['\"]([^'\"]+)['\"]"), "jQuery AJAX"),
-        # Axios
-        (re.compile(r"\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"), "Axios"),
-        # Fetch API
-        (re.compile(r"\b(?:await\s+)?fetch\s*\(\s*['\"]([^'\"]+)['\"]"), "Fetch API"),
-        # XMLHttpRequest
-        (re.compile(r"\b(?:new\s+XMLHttpRequest\s*\(|xhr\.open\s*\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"])"), "XMLHttpRequest"),
+        # Express: app.get("/…") / router.post("/…")
+        (re.compile(
+            r'\b(?:app|router)\.(get|post|put|delete|patch|all)'
+            r'\s*\(\s*["\']([^"\']+)["\']'
+        ), "Express"),
+
+        # Express-цепочки router.route("/…").get(…)…
+        (re.compile(
+            r'router\.route\s*\(\s*["\']([^"\']+)["\']\)\s*'
+            r'(?:\.\s*(?:get|post|put|delete|patch)\s*\()'
+        ), "Express"),
+
+        # NestJS декораторы @Controller / @Get() / @Post() …
+        (re.compile(
+            r'@(?:Controller|Get|Post|Put|Delete|Patch)\(\s*["\']([^"\']*)["\']\s*\)'
+        ), "NestJS"),
+
+        # jQuery AJAX: $.ajax({url: "…"})
+        (re.compile(
+            r'\b(?:\$\.ajax|jQuery\.ajax)\s*\(\s*{[^}]*url\s*:\s*["\']([^"\']+)["\']'
+        ), "jQuery AJAX"),
+        (re.compile(
+            r'\b\$(?:\s*\.\s*)?(get|post|ajax)\s*\(\s*["\']([^"\']+)["\']'
+        ), "jQuery AJAX"),
+
+        # Axios, Fetch, XHR
+        (re.compile(r'\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']'), "Axios"),
+        (re.compile(r'\b(?:await\s+)?fetch\s*\(\s*["\']([^"\']+)["\']'), "Fetch API"),
+        (re.compile(
+            r'\b(?:new\s+XMLHttpRequest\s*\(|'
+            r'xhr\.open\(\s*["\'](?:GET|POST|PUT|DELETE|PATCH)["\']\s*,\s*'
+            r'["\']([^"\']+)["\']\))'
+        ), "XMLHttpRequest"),
+        # AngularJS ($http)
+        (re.compile(
+            r"\b\$http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "AngularJS"),
+        
+        # Modern Angular (HttpClient)
+        (re.compile(
+            r"\bthis\.http\.(get|post|put|delete|patch)\s*\(\s*['\"]([^'\"]+)['\"]"
+        ), "Angular HttpClient"),
     ],
 
     "Ruby": [
@@ -205,11 +268,26 @@ AJAX_PATTERN = re.compile(
     r"ajax\([^)]+['\"]([^'\"]+)['\"]\)"
 )
 AJAX_PATTERN_EXT = re.compile(
-    # объединяем fetch, axios, XHR, jQuery
-    r"(?:\b(?:await\s+)?fetch\(\s*['\"]([^'\"]+)['\"]\s*\))|"
-    r"(?:\b(?:await\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\s*\))|"
-    r"(?:\b(?:new\s+XMLHttpRequest\s*\(|xhr\.open\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"],\s*['\"]([^'\"]+)['\"]))|"
-    r"(?:\b(?:\$\.ajax|jQuery\.ajax)\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"])"
+    # Fetch API (с await и без)
+    r"(?:\bawait\s+)?fetch\(\s*['\"]([^'\"]+)['\"]\s*\)"
+    # Axios: axios.get/post/patch и универсальный axios({...})
+    r"|(?:\bawait\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\s*\)"
+    r"|(?:\bawait\s+)?axios\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"][^}]*}\)"
+    r"|(?:\bawait\s+)?axios\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]"
+    r"(?:\s*,[^)]*)?\)"
+    # XHR
+    r"|(?:new\s+XMLHttpRequest\s*\(\s*\))"
+    r"|(?:xhr\.open\(\s*['\"](?:GET|POST|PUT|DELETE|PATCH)['\"],\s*['\"]([^'\"]+)['\"]\s*,\s*[^)]+\))"
+    # jQuery.ajax и $.get/$.post/$.getJSON
+    r"|(?:\b(?:\$\.ajax|jQuery\.ajax)\(\s*{[^}]*url\s*:\s*['\"]([^'\"]+)['\"][^}]*}\))"
+    r"|(?:\b\$(?:get|post|getJSON|ajax)\(\s*['\"]([^'\"]+)['\"]\))"
+    r"|(?:\b\$(?:get|post|ajax)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
+    # AngularJS $http.get/post/…
+    r"|(?:\b\$http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\))"
+    r"|(?:\b\$http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
+    # Modern Angular HttpClient this.http.get/post/…
+    r"|(?:\bthis\.http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"]\))"
+    r"|(?:\bthis\.http\.(?:get|post|put|delete|patch)\(\s*['\"]([^'\"]+)['\"][^)]*\))"
 )
 PASSWORD_PATTERN = re.compile(r"(password|secret|token|apikey|access_key|client_secret)\s*[:=]\s*['\"]?([a-zA-Z0-9_!@#$%^&*()]+)['\"]?")
 

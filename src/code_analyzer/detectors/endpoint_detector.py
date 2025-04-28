@@ -19,6 +19,8 @@ EXTENSION_LANG_MAP = {
     '.rb':   'Ruby',
     '.php':  'PHP',
     '.go':   'Go',
+    '.java': 'Java',
+    '.kt':   'Kotlin',
 }
 
 class EndpointDetector(Detector):

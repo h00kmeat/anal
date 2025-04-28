@@ -51,7 +51,6 @@ def main():
     config_secrets  = config_detector.secrets
 
     # 7) Сливаем зависимостями и конфига в единый tech_stack
-    #    (чтобы в отчёте попал тот же стек, что и в старом script1.py)
     for cat, items in deps.items():
         if items:
             tech_stack.setdefault(cat, set()).update(items)
