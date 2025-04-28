@@ -60,9 +60,7 @@ class EndpointDetector(Detector):
 
                 for regex, framework in ENDPOINT_PATTERNS.get(lang_for_file, []):
                     for m in regex.finditer(text):
-                        # если паттерн захватывает метод (например Express), берём его, иначе "ALL"
                         method = m.group(1).upper() if regex.groups >= 2 else 'ALL'
-                        # путь всегда последняя группа
                         route = m.group(regex.groups)
                         line_no = text[:m.start()].count('\n') + 1
                         raw.append((
@@ -75,7 +73,6 @@ class EndpointDetector(Detector):
 
                 # 4) Ищем AJAX-запросы (общие шаблоны)
                 for match in AJAX_PATTERN_EXT.finditer(text):
-                    # безопасный next — если нет ни одной непустой группы, пропускаем
                     url = next((g for g in match.groups() if g), None)
                     if not url:
                         continue

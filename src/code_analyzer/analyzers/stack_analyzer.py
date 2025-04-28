@@ -1,4 +1,5 @@
 from typing import Dict, Set
+import os
 from ..patterns import TECHNOLOGY_DETECTORS, TECHNOLOGIES_BY_LANG, JS_TECH_DETECTION 
 from ..detectors.base import Detector
 from ..detectors import FileDetector, CodeDetector
@@ -15,13 +16,17 @@ class StackAnalyzer:
         затем — общие технологии из TECHNOLOGY_DETECTORS.
         """
         # ——— Новый блок для JS/TS ———
-        if self.main_lang in ["JavaScript", "TypeScript"]:
+        pkg_json = os.path.join(self.directory, "package.json")
+        if os.path.exists(pkg_json):
             for tech, info in JS_TECH_DETECTION.items():
+                # категория: frontend / backend / database
                 cat = 'frontend' if info['type']=='frontend' else 'backend' if info['type']=='backend' else 'database'
-                # строим regex для поиска в package.json
-                pattern = r'"(?:' + '|'.join(info['packages']) + r')"'
-                inst = [CodeDetector(self.directory, pattern)]
-                self.detectors.append((cat, tech, inst))
+                # конфиг для FileDetector — паттерн найдёт package.json
+                cfg = {
+                    'type':   'file',
+                    'pattern': r'"(?:' + '|'.join(info['packages']) + r')"'
+                }
+                self.detectors.append((cat, tech, [FileDetector(self.directory, [cfg])]))
 
         # ——— Существующий код для остальных технологий ———
         lang_techs = TECHNOLOGIES_BY_LANG.get(self.main_lang, {})

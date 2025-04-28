@@ -22,30 +22,39 @@ class FileDetector(Detector):
         self._matches.clear()
     
         for cfg in self.configs:
-            pattern       = os.path.join(self.directory, cfg.get('path', ''))
             expected_type = cfg.get('type', 'file')
-    
-            for path in glob.glob(pattern, recursive=True):
-                # Директория?
-                if expected_type == 'dir':
-                    if os.path.isdir(path):
-                        self._matches.append((path, None))
-                    continue
-                
-                # Файл?
-                if not os.path.isfile(path):
-                    continue
-                
-                # Поиск по содержимому (если нужно)
-                if 'content' in cfg:
-                    try:
-                        text = open(path, 'r', encoding='utf-8', errors='ignore').read()
-                    except Exception:
-                        continue
-                    if cfg['content'] in text:
-                        self._matches.append((path, cfg['content']))
-                else:
-                    self._matches.append((path, None))
+
+            # 1) Если cfg содержит re.Pattern — фильтруем по нему
+            if isinstance(cfg.get('pattern'), re.Pattern):
+                pat: re.Pattern = cfg['pattern']
+                for root, _, files in os.walk(self.directory):
+                    for fname in files:
+                        if pat.search(fname):
+                            full = os.path.join(root, fname)
+                            if expected_type == 'dir' and os.path.isdir(full):
+                                self._matches.append((full, None))
+                            elif expected_type == 'file' and os.path.isfile(full):
+                                # при необходимости ищем по содержимому
+                                if 'content' in cfg:
+                                    text = open(full, 'r', encoding='utf-8', errors='ignore').read()
+                                    if cfg['content'] in text:
+                                        self._matches.append((full, cfg['content']))
+                                else:
+                                    self._matches.append((full, None))
+                continue
+
+            # 2) Иначе — классический glob по cfg['path']
+            pattern_str = cfg.get('path', '')
+            for full in glob.glob(os.path.join(self.directory, pattern_str), recursive=True):
+                if expected_type == 'dir' and os.path.isdir(full):
+                    self._matches.append((full, None))
+                elif expected_type == 'file' and os.path.isfile(full):
+                    if 'content' in cfg:
+                        text = open(full, 'r', encoding='utf-8', errors='ignore').read()
+                        if cfg['content'] in text:
+                            self._matches.append((full, cfg['content']))
+                    else:
+                        self._matches.append((full, None))
     
         return (bool(self._matches), self._matches)
 

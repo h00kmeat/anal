@@ -62,17 +62,15 @@ class ReportGenerator:
         eps = results.get('endpoints', [])
         if not eps:
             print("Не найдено API эндпоинтов")
-            return
 
-        # Группируем по файлам
+        
         by_file = defaultdict(list)
         for ep in eps:
             by_file[ep['file']].append(ep)
 
-        # Выводим по файлам, предварительно сортируя по line
+
         for file_path, endpoints in sorted(by_file.items()):
             print(f"\n{file_path}:")
-            # Сортируем список по номеру строки
             for ep in sorted(endpoints, key=lambda x: x.get('line', 0)):
                 line      = ep.get('line', '?')
                 method    = ep.get('method', '').upper()
@@ -92,7 +90,6 @@ class ReportGenerator:
         http_methods = results.get('http_methods', [])
         print("\n=== HTTP МЕТОДЫ ===")
         if http_methods:
-            # ожидаем список словарей вида {'file':..., 'line':..., 'method':..., 'context':...}
             for m in http_methods:
                 print(f"{m['file']:40} · {m['line']:4}  {m['method']:7}  {m.get('context','')}")
         else:
@@ -102,7 +99,6 @@ class ReportGenerator:
         headers = results.get('headers', [])
         print("\n=== HTTP ЗАГОЛОВКИ ===")
         if headers:
-            # ожидаем список словарей вида {'file':..., 'line':..., 'header':..., 'value':...}
             for h in headers:
                 hdr = h['headers']
                 val = h.get('value')

@@ -648,7 +648,8 @@ DEPENDENCY_FILES = {
 }
 
 JS_TECH_DETECTION = {
-    "React": {"packages": ["react", "react-dom"], "type": "frontend"},
+    "React":    {"packages": ["react", "react-dom"], "type": "frontend"},
+    "Next.js":  {"packages": ["next"], "type": "frontend"},
     "Angular": {"packages": ["@angular/core"], "type": "frontend"},
     "Vue": {"packages": ["vue"], "type": "frontend"},
     "Express": {"packages": ["express"], "type": "backend"}, 
@@ -973,3 +974,32 @@ TECHNOLOGY_DETECTORS = {
         {"type": "code", "pattern": "import.*from ['\"]next['\"]"}
     ]
 }
+TECHNOLOGY_DETECTORS.update({
+    "React": [
+        # кодовые признаки
+        {"type": "code", "pattern": re.compile(r"\bimport\s+React\b")},
+        {"type": "code", "pattern": re.compile(r"\bReactDOM\.render\(")},
+        # расширения файлов JSX(TSX)
+        {"type": "file", "pattern": re.compile(r"\.jsx?$", re.IGNORECASE)},
+    ],
+    "Next.js": [
+        # конфиг Nuxt-подобных приложений
+        {"type": "file", "pattern": re.compile(r"\bnext\.config\.js$", re.IGNORECASE)},
+        # импорт из `next/...`
+        {"type": "code", "pattern": re.compile(r"from\s+['\"]next(?:\/[a-zA-Z\-_]+)*['\"]")},
+    ],
+    "Angular": [
+        # наличие angular.json
+        {"type": "file", "pattern": re.compile(r"\bangular\.json$", re.IGNORECASE)},
+        # декорации NgModule / Component
+        {"type": "code", "pattern": re.compile(r"@NgModule\s*\(")},
+        {"type": "code", "pattern": re.compile(r"@Component\s*\(")},
+    ],
+    "Vue": [
+        # single-file компоненты
+        {"type": "file", "pattern": re.compile(r"\.vue$", re.IGNORECASE)},
+        # import Vue
+        {"type": "code", "pattern": re.compile(r"\bimport\s+Vue\b")},
+        {"type": "code", "pattern": re.compile(r"new\s+Vue\s*\(")},
+    ],
+})

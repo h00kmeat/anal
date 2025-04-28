@@ -10,9 +10,11 @@ class CodeDetector(Detector):
 
     def __init__(self, directory: str, pattern: str):
         super().__init__(directory)
-        # Компилируем паттерн один раз
-        self.pattern = re.compile(pattern, re.IGNORECASE)
-        # Список найденных совпадений: (путь, номер_строки, текст_совпадения)
+        # Если пришёл уже re.Pattern — используем напрямую, иначе компилируем
+        if isinstance(pattern, re.Pattern):
+            self.pattern = pattern
+        else:
+            self.pattern = re.compile(pattern, re.IGNORECASE)
         self._matches: List[Tuple[str, int, str]] = []
 
     def detect(self) -> List[Tuple[str, int, str]]:
